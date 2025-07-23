@@ -1,0 +1,62 @@
+.Star {
+  --color-star: hsl(from var(--star-color) h s calc(l + 7.5) / 1);
+
+  path {
+    pointer-events: none;
+    fill: var(--color-star);
+  }
+
+  &__Label {
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+    font-size: 7px;
+    line-height: 7px;
+    font-weight: 600;
+    transition-property: opacity, visibility;
+    transition-duration: var(--transition-duration);
+
+    &--visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &--line {
+      stroke-width: 1px;
+      stroke: var(--color-star);
+    }
+
+    &--text {
+      --clip-size: 3px;
+      cursor: pointer;
+      pointer-events: all;
+      position: relative;
+      display: inline-flex;
+      padding: 1px 1.5px 2px;
+      color: var(--color-star);
+
+      &:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-bottom: 1px solid var(--color-star);
+        transform: scaleX(1.00001);
+        transition-property: transform;
+        transition-duration: var(--transition-duration);
+      }
+
+      &:hover {
+        filter: drop-shadow(0px 0px 3px var(--star-color));
+        &:before {
+          transform: scaleX(1.25);
+          z-index: 1;
+        }
+      }
+    }
+
+    foreignObject {
+      overflow: visible;
+    }
+  }
+}

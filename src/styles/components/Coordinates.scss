@@ -1,0 +1,35 @@
+.Coordinates {
+  position: relative;
+  align-self: center;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  padding: 0.5em 0.75em;
+  background-color: var(--color-base);
+  color: hsl(from var(--color-text) h s calc(l - 50));
+  border: 2px solid var(--color-primary);
+  backdrop-filter: var(--blur);
+  clip-path: var(--clip-top-edges);
+  transform: translateY(2px);
+  z-index: 1;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 2px;
+    background-color: var(--color-primary);
+  }
+
+  &:before {
+    top: 2px;
+    left: -2px;
+    transform: rotate(-45deg);
+  }
+
+  &:after {
+    top: 2px;
+    right: -2px;
+    transform: rotate(45deg);
+  }
+}

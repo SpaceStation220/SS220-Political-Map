@@ -1,0 +1,27 @@
+.SectorBorder {
+  fill: hsl(from var(--sector-color) h s l / 0.1);
+  stroke: hsl(from var(--sector-color) h s calc(l - 10));
+  stroke-width: 1px;
+  transition: fill var(--transition-duration);
+
+  &:hover {
+    cursor: pointer;
+    fill: hsl(from var(--sector-color) h s l / 0.25);
+    transition-delay: var(--transition-duration);
+  }
+
+  &--dashed {
+    stroke-dasharray: 7.5 7.5;
+  }
+
+  ~ image {
+    opacity: 0.25;
+    pointer-events: none;
+    transition: opacity var(--transition-duration);
+  }
+
+  &:hover ~ image {
+    opacity: 0.5;
+    transition-delay: var(--transition-duration);
+  }
+}

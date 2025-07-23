@@ -1,0 +1,46 @@
+.Tooltip {
+  pointer-events: none;
+  padding: 0.25em 0.75em;
+  background-color: var(--color-base);
+  border: 2px solid var(--color-primary);
+  backdrop-filter: var(--blur);
+  clip-path: polygon(
+    var(--clip-size) 0,
+    100% 0,
+    100% calc(100% - var(--clip-size)),
+    calc(100% - var(--clip-size)) 100%,
+    0 100%,
+    0 var(--clip-size)
+  );
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 2px;
+    background-color: var(--color-primary);
+    transform: rotate(-45deg);
+  }
+
+  &:before {
+    top: 2px;
+    left: -2px;
+  }
+
+  &:after {
+    bottom: 2px;
+    right: -2px;
+  }
+
+  &[data-transition="close"],
+  &[data-transition="initial"] {
+    --clip-size: 100%;
+  }
+
+  &[data-transition="open"],
+  &[data-transition="close"] {
+    transition-property: --clip-size;
+    transition-duration: var(--transition-duration);
+  }
+}

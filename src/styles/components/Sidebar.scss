@@ -1,0 +1,95 @@
+.Sidebar {
+  pointer-events: all;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 100%;
+  gap: 0.5rem;
+  background-color: var(--color-base);
+  border-right: 2px solid var(--color-primary);
+  backdrop-filter: var(--blur);
+  transition-property: transform;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: ease-in-out;
+
+  @starting-style {
+    transform: translateX(-100%);
+  }
+
+  &--hidden {
+    transform: translateX(-100%);
+  }
+
+  &__Header {
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 0.5em 0.66em;
+    border-bottom: 1px solid var(--color-border);
+
+    img {
+      aspect-ratio: 1 / 1;
+      width: 48px;
+    }
+
+    span {
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+
+  &__Content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+    gap: 0.25em;
+    padding: 0.5em;
+  }
+
+  &__Footer {
+    display: flex;
+    padding: 0.5em 0.75em 0;
+
+    .Input {
+      flex: 1;
+      padding: 0.6em 1.1em 0.5em;
+      background-color: hsla(0, 0%, 100%, 0.1);
+      color: var(--color-text);
+      border: none;
+      clip-path: polygon(
+        var(--clip-size) 0,
+        calc(100% - var(--clip-size)) 0,
+        100% var(--clip-size),
+        100% 100%,
+        0 100%,
+        0 var(--clip-size)
+      );
+      transition-property: background-color, margin, --clip-size;
+      transition-duration: var(--transition-duration);
+
+      &::placeholder {
+        color: hsl(from var(--color-text) h s l / 0.33);
+      }
+
+      &:hover,
+      &:focus {
+        background-color: hsla(0, 0%, 100%, 0.15);
+      }
+
+      &:focus {
+        --clip-size: 0px;
+        margin: 0 -0.75em;
+      }
+    }
+  }
+
+  &__Sectors {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25em;
+  }
+}

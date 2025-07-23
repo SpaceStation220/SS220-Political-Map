@@ -1,0 +1,70 @@
+@use "sass:meta";
+
+// Core styles
+@include meta.load-css("common/reset.scss");
+@include meta.load-css("common/variables.scss");
+
+// Components
+@include meta.load-css("components/Button.scss");
+@include meta.load-css("components/SectorBorder.scss");
+@include meta.load-css("components/Sidebar.scss");
+@include meta.load-css("components/HideButton.scss");
+@include meta.load-css("components/Sector.scss");
+@include meta.load-css("components/Star.scss");
+@include meta.load-css("components/Coordinates.scss");
+@include meta.load-css("components/StaticObjects.scss");
+@include meta.load-css("components/MoreInfo.scss");
+@include meta.load-css("components/Loading.scss");
+@include meta.load-css("components/Preferences.scss");
+@include meta.load-css("components/Tooltip.scss");
+
+.Overlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+
+.Flex {
+  display: flex;
+
+  &--inline {
+    display: inline-flex;
+  }
+}
+
+.Stack {
+  gap: 0.5em;
+
+  &--fill {
+    height: 100%;
+  }
+
+  &--horizontal > .Stack__divider:not(.Stack__divider--hidden) {
+    border-left: var(--color-border);
+  }
+
+  &--vertical > .Stack__divider:not(.Stack__divider--hidden) {
+    border-top: var(--color-border);
+  }
+
+  &--zebra > .Stack__item:nth-child(odd) {
+    background-color: var(--candystripe-odd);
+  }
+}
+
+.LabeledList__cell:not(:first-child) {
+  padding-left: 0.5em;
+}
+
+.color-label {
+  color: hsl(from var(--color-primary) h calc(s - 20) calc(l + 12.5));
+}
+
+.MapWrapper {
+  opacity: 1;
+  transition: opacity 1s;
+
+  @starting-style {
+    opacity: 0;
+  }
+}

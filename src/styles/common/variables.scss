@@ -1,0 +1,59 @@
+@property --clip-size {
+  syntax: "<length-percentage>";
+  inherits: true;
+  initial-value: 10px;
+}
+
+:root {
+  --map-size: 1024px;
+
+  /* Main colors */
+  --color-base: hsla(0, 0%, 0%, 0.5);
+  --color-primary: hsl(200, 75%, 33%);
+  --color-text: hsl(0, 0%, 90%);
+  --color-text-translucent: hsla(0, 0%, 100%, 0.5);
+  --color-text-translucent-light: hsla(0, 0%, 100%, 0.75);
+  --color-border: hsla(0, 0%, 100%, 0.1);
+
+  /* Candystripe */
+  --candystripe-odd: hsla(0, 0%, 0%, 0.25);
+  --candystripe-even: transparent;
+
+  /* Blur */
+  --blur: blur(512px);
+
+  /* Transition */
+  --transition-duration: 0.2s;
+  --linear-bounce: linear(0 0%, 0.5 25%, 1.25 50%, 0.75 75%, 1 100%);
+
+  /* Polygons */
+  --clip-top-left: polygon(var(--clip-size) 0, 100% 0, 100% 100%, 0 100%, 0 var(--clip-size));
+  --clip-top-right: polygon(calc(100% - var(--clip-size)) 0, 100% var(--clip-size), 100% 100%, 0 100%, 0 0);
+
+  --clip-top-edges: polygon(
+    var(--clip-size) 0,
+    calc(100% - var(--clip-size)) 0,
+    100% var(--clip-size),
+    100% 100%,
+    0 100%,
+    0 var(--clip-size)
+  );
+
+  --clip-top-left-bottom-right-edges: polygon(
+    var(--clip-size) 0,
+    100% 0,
+    100% calc(100% - var(--clip-size)),
+    calc(100% - var(--clip-size)) 100%,
+    0 100%,
+    0 var(--clip-size)
+  );
+
+  --clip-bottom-right: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - var(--clip-size)),
+    calc(100% - var(--clip-size)) 100%,
+    0 100%,
+    0 0
+  );
+}

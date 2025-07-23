@@ -1,0 +1,104 @@
+import { useLocalStorage } from "@uidotdev/usehooks";
+import { CSSProperties, useState } from "react";
+import { useControls } from "react-zoom-pan-pinch";
+import { Input, Stack } from "tgui-core/components";
+import { useFuzzySearch } from "tgui-core/fuzzysearch";
+import { classes } from "tgui-core/react";
+
+import { stringToId } from "../common/helpers";
+import { stars } from "../common/sectors";
+import { Star } from "../common/types";
+import { Button } from "./Button";
+import { HideButton } from "./HideButton";
+import { Preferences } from "./Preferences";
+
+export function Sidebar() {
+  const [sidebarHidden, setSidebarHidden] = useLocalStorage("sidebar-hidden", false);
+
+  return (
+    <aside className={classes(["Sidebar", sidebarHidden && "Sidebar--hidden"])}>
+      <HideButton checked={sidebarHidden} onClick={() => setSidebarHidden(!sidebarHidden)} />
+      <SidebarHeader />
+      <SidebarContent />
+      <Preferences />
+    </aside>
+  );
+}
+
+function SidebarHeader() {
+  return (
+    <div className="Sidebar__Header">
+      <img src="/SS220.svg" />
+      <span>Политическая карта</span>
+    </div>
+  );
+}
+
+function SidebarContent() {
+  const { query, setQuery, results } = useFuzzySearch({
+    searchArray: stars.map((s) => s.name),
+    matchStrategy: "smart",
+    getSearchString: (name) => name,
+  });
+
+  const filteredStars = query ? stars.filter((star) => results.includes(star.name)) : stars;
+
+  const sectors: Record<string, Star[]> = {};
+  for (const star of filteredStars) {
+    const name = star.affiliation.name;
+    if (!sectors[name]) sectors[name] = [];
+    sectors[name].push(star);
+  }
+
+  return (
+    <>
+      <div className="Sidebar__Content">
+        <div className="Sidebar__Sectors">
+          {Object.entries(sectors).map(([sectorName, stars]) => (
+            <SidebarSector key={sectorName} name={sectorName} stars={stars} open={!!query} />
+          ))}
+        </div>
+      </div>
+      <div className="Sidebar__Footer">
+        <Input value={query} placeholder="Найти звезду..." onChange={setQuery} />
+      </div>
+    </>
+  );
+}
+
+type SidebarSectorProps = {
+  name: string;
+  stars: Star[];
+  open?: boolean;
+};
+
+function SidebarSector({ name, stars, open }: SidebarSectorProps) {
+  const [opened, setOpened] = useState(false);
+  const { zoomToElement } = useControls();
+
+  return (
+    <nav className={classes(["Sector", (opened || open) && "Sector--opened"])}>
+      <div className="Sector__Title" onClick={() => setOpened(!opened)}>
+        <Stack fill>
+          <Stack.Item className={classes(["Sector__TitleIcon", (opened || open) && "Sector__TitleIcon--opened"])}>
+            <div />
+            <div />
+            <div />
+          </Stack.Item>
+          <Stack.Item grow>{name}</Stack.Item>
+        </Stack>
+      </div>
+      <div className="Sector__Stars">
+        {stars.map((star, i) => (
+          <Button
+            key={star.name}
+            style={{ "--index": i } as CSSProperties}
+            onClick={() => zoomToElement(stringToId(star.name))}
+          >
+            {star.name}
+          </Button>
+        ))}
+      </div>
+    </nav>
+  );
+}

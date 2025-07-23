@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "Exo 2";
+  font-display: swap;
+  src: url("/fonts/Exo2-VariableFont_wght.ttf") format("truetype");
+}
+
+:root {
+  interpolate-size: allow-keywords;
+}
+
+html,
+body {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Exo 2";
+  scrollbar-color: var(--color-primary) transparent;
+  background-color: hsl(from var(--color-base) h s l / 1);
+  color: var(--color-text);
+  z-index: -5;
+}
+
+button {
+  cursor: pointer;
+  appearance: none;
+  padding: 0;
+  border: 0;
+}
+
+:focus-visible {
+  outline: none;
+}

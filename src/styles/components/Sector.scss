@@ -1,0 +1,100 @@
+.Sector {
+  margin-block: 0.25em;
+
+  &__Title {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    font-size: 17px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &:before {
+      content: "";
+      position: absolute;
+      right: -0.25em;
+      bottom: -0.33em;
+      left: -0.5em;
+      height: 2px;
+      background-color: var(--color-primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition-duration);
+      transition-timing-function: ease-in-out;
+    }
+
+    &:hover:before {
+      transform: scaleX(1);
+    }
+
+    &Icon {
+      position: relative;
+      align-self: center;
+      width: 16px;
+
+      div {
+        --transform-timing: ease;
+        opacity: 0.25;
+        position: absolute;
+        right: 0;
+        left: 0;
+        height: 2px;
+        background-color: var(--color-text);
+        border-radius: 99999px;
+        transition:
+          transform var(--transition-duration) var(--transform-timing),
+          opacity var(--transition-duration);
+      }
+
+      &--opened {
+        div {
+          --transform-timing: var(--linear-bounce);
+          opacity: 1;
+          transition-duration: calc(var(--transition-duration) * 2);
+
+          &:first-child {
+            transform: translateY(5px);
+          }
+
+          &:last-child {
+            transform: translateY(-5px);
+          }
+        }
+      }
+    }
+  }
+
+  &__Stars {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0em;
+    gap: 0.25em;
+    height: 0px;
+    transition-property: height, margin-top;
+    transition-duration: var(--transition-duration);
+
+    .Button {
+      opacity: 0;
+      transform: translateX(-25%);
+      transition-property: transform, opacity, background-color, color;
+    }
+  }
+
+  &--opened {
+    .Sector__Title:before {
+      transform: scaleX(1);
+    }
+
+    .Sector__Stars {
+      height: auto;
+      margin-top: 0.75em;
+
+      .Button {
+        opacity: 1;
+        transform: translateX(0%);
+        transition-delay: calc(20ms * var(--index)), calc(20ms * var(--index)), 0s, 0s;
+      }
+    }
+  }
+}

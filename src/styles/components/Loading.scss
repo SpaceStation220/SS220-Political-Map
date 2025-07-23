@@ -1,0 +1,64 @@
+.Loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 100dvh;
+
+  &__Dots {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1rem;
+    height: 2.5rem;
+
+    div {
+      aspect-ratio: 1;
+      width: 2.5rem;
+      background-color: var(--color-primary);
+      clip-path: var(--clip-top-left-bottom-right-edges);
+      animation: loading-dots 1s infinite ease-in-out;
+      animation-delay: 0.6s;
+
+      &:first-child {
+        animation-delay: 0.4s;
+      }
+
+      &:last-child {
+        animation-delay: 0.8s;
+      }
+    }
+
+    @keyframes loading-dots {
+      0%,
+      50%,
+      100% {
+        opacity: 0.5;
+        aspect-ratio: 1;
+      }
+
+      75% {
+        opacity: 1;
+        aspect-ratio: 1 / 2;
+      }
+    }
+  }
+
+  &__Text {
+    user-select: none;
+    font-size: 2rem;
+    color: var(--color-text-translucent);
+    animation: loading-text 2s infinite ease-in-out;
+
+    @keyframes loading-text {
+      0%,
+      100% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.HideButton {
+  --button-width: 20px;
+  cursor: pointer;
+  position: absolute;
+  right: calc(-1 * var(--button-width));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 9px;
+  width: var(--button-width);
+  height: 69px;
+  margin-top: -4px;
+  background-color: var(--color-primary);
+  transition-property: height, gap;
+  transition-duration: var(--transition-duration);
+  clip-path: var(--clip-bottom-right);
+  will-change: clip-path;
+
+  div {
+    --dot-size: 6px;
+    width: var(--dot-size);
+    height: var(--dot-size);
+    background-color: white;
+    border-radius: 99999px;
+  }
+
+  &--checked {
+    gap: 4px;
+    height: 45px;
+  }
+}

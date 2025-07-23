@@ -1,0 +1,23 @@
+.Button {
+  display: inline-flex;
+  padding: 0.33em 0.5em;
+  background-color: transparent;
+  color: var(--color-text-translucent);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 0.75em), calc(100% - 0.75em) 100%, 0 100%);
+  transition-property: background-color;
+  transition-duration: var(--transition-duration);
+
+  &:hover {
+    background-color: hsl(from var(--color-base) h s calc(l + 15));
+    color: var(--color-text-translucent-light);
+    transition-duration: 0s;
+  }
+
+  &:active {
+    background-color: hsl(from var(--color-base) h s calc(l + 10));
+  }
+
+  &--fluid {
+    width: 100%;
+  }
+}
