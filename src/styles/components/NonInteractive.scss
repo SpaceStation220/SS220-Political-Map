@@ -1,3 +1,9 @@
+@use "sass:math";
+
+@function limited-random($min: 0.75, $max: 2) {
+  @return ($min + (math.random() * ($max - $min))) * 1s;
+}
+
 .StaticObjects {
   pointer-events: none;
   position: absolute;
@@ -52,16 +58,118 @@
   }
 
   .RestrictedSpace {
+    --glitch-duration: #{limited-random()};
     --sector-color: hsl(0, 66%, 33%);
     position: absolute;
     bottom: 0;
     left: 0;
     width: 600px;
+    fill: transparent;
 
     &__Logo {
-      bottom: -35px;
-      left: -175px;
+      bottom: 30px;
+      left: 30px;
       width: 150px;
+    }
+
+    &:nth-child(1) {
+      fill: hsl(from var(--sector-color) h s l / 0.1);
+      stroke: transparent;
+    }
+
+    &:nth-child(2) {
+      --glitch-x-1: 2px;
+      clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+      animation: glitch calc(var(--glitch-duration) * 1.2) linear infinite;
+    }
+
+    &:nth-child(3) {
+      --glitch-x-1: -4px;
+      clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+      animation: glitch var(--glitch-duration) linear infinite;
+    }
+
+    &:nth-child(4) {
+      --glitch-x-1: 4px;
+      clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%);
+      animation: glitch calc(var(--glitch-duration) * 1.375) linear infinite;
+    }
+
+    &:nth-child(5) {
+      --glitch-x-1: -6px;
+      clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+      animation: glitch calc(var(--glitch-duration) * 0.955) linear infinite;
+    }
+
+    &:nth-child(6) {
+      --glitch-x-1: 4px;
+      clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
+      animation: glitch calc(var(--glitch-duration) * 1.337) linear infinite;
+    }
+
+    @keyframes glitch {
+      0.00%,
+      33.33%,
+      43.33%,
+      66.67%,
+      76.67%,
+      100.00% {
+        transform: none;
+      }
+
+      33.43%,
+      43.23% {
+        transform: translateX(var(--glitch-x-1));
+      }
+
+      66.77%,
+      76.57% {
+        transform: translateX(calc(-1 * var(--glitch-x-1)));
+      }
+    }
+
+    @keyframes glitch-1 {
+      0% {
+        transform: translateX(0);
+      }
+      1%,
+      20% {
+        transform: translateX(1px);
+      }
+      21%,
+      60% {
+        transform: translateX(-2px);
+      }
+      61%,
+      80% {
+        transform: translateX(1px);
+      }
+      81%,
+      100% {
+        transform: translateX(-2px);
+      }
+    }
+
+    @keyframes glitch-2 {
+      0% {
+        transform: translateX(0);
+      }
+      1%,
+      20% {
+        transform: translateX(-1px);
+      }
+      21%,
+      60% {
+        transform: translateX(2px);
+      }
+      61%,
+      80% {
+        transform: translateX(-1px);
+      }
+      81%,
+      100% {
+        transform: translateX(2px);
+      }
     }
   }
 }
