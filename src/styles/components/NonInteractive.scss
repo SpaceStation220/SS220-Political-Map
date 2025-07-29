@@ -56,6 +56,20 @@
     }
   }
 
+  .NorthSign {
+    opacity: 0.66;
+    width: 175px;
+    top: -100px;
+    left: calc(var(--map-size) / 2 - calc(175px / 2));
+  }
+
+  .NorthEastSign {
+    opacity: 0.66;
+    width: 175px;
+    top: -42.5px;
+    right: -200px;
+  }
+
   .RestrictedSpace {
     --glitch-duration: #{limited-random()};
     --sector-color: hsl(0, 66%, 33%);

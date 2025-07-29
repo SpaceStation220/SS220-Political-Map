@@ -20,6 +20,7 @@ export function Stars() {
         path,
         transform,
         name: star.name,
+        capital: star.type === STAR_TYPE.Capital,
         x: star.position.x,
         y: star.position.y,
         labelX: star?.labelShift?.x,
@@ -36,7 +37,7 @@ export function Stars() {
       style={{ "--star-color": star.color } as CSSProperties}
     >
       <path d={star.path} transform={star.transform} />
-      <g className={classes(["Star__Label", textVisible && "Star__Label--visible"])}>
+      <g className={classes(["Star__Label", (textVisible || star.capital) && "Star__Label--visible"])}>
         <line
           className="Star__Label--line"
           x1={star.x}
