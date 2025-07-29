@@ -15,6 +15,20 @@ export function NonInteractive() {
 
   return (
     <div className="StaticObjects">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <svg key={i} className="SectorBorder RestrictedSpace" viewBox="0 0 599.19 342.36">
+          <g>
+            <polyline points="376.86 341.86 376.86 291.53 385.41 282.99 428.03 282.99 445.1 265.92 445.1 256.53 453.64 247.98 573.09 247.98 598.69 222.39 598.69 204.45 590.16 195.92 351.23 195.92 342.7 187.39 291.46 187.39 275.24 171.17 248.83 171.17 164.36 86.7 164.36 9.04 155.81 .5 129.35 .5 103.73 26.12 103.73 85.85 95.19 94.39 95.19 127.67 85.84 137.02 .5 137.02 .5 341.86 376.86 341.86" />
+            {i === 0 && (
+              <foreignObject x={200} y={220} width={250} height={60}>
+                <RandomText>
+                  <span>Область потенциальной</span> активности
+                </RandomText>
+              </foreignObject>
+            )}
+          </g>
+        </svg>
+      ))}
       {!circlesDisabled && (
         <svg className={translucent ? "translucent" : ""} width="100%" height="100%" viewBox={`0 0 1024 1024`}>
           <circle cx="512" cy="512" r="85.73" />
@@ -31,20 +45,6 @@ export function NonInteractive() {
           </text>
         </svg>
       )}
-      {Array.from({ length: 6 }).map((_, i) => (
-        <svg key={i} className="SectorBorder RestrictedSpace" viewBox="0 0 599.19 342.36">
-          <g>
-            <polyline points="376.86 341.86 376.86 291.53 385.41 282.99 428.03 282.99 445.1 265.92 445.1 256.53 453.64 247.98 573.09 247.98 598.69 222.39 598.69 204.45 590.16 195.92 351.23 195.92 342.7 187.39 291.46 187.39 275.24 171.17 248.83 171.17 164.36 86.7 164.36 9.04 155.81 .5 129.35 .5 103.73 26.12 103.73 85.85 95.19 94.39 95.19 127.67 85.84 137.02 .5 137.02 .5 341.86 376.86 341.86" />
-            {i === 0 && (
-              <foreignObject x={200} y={220} width={250} height={60}>
-                <RandomText>
-                  <span>Область потенциальной</span> активности
-                </RandomText>
-              </foreignObject>
-            )}
-          </g>
-        </svg>
-      ))}
       <img className="RestrictedSpace__Logo" src={`${import.meta.env.BASE_URL}RestrictedLogo.svg`} />
       <img className="DeadSpace first" src={`${import.meta.env.BASE_URL}DeadSpace.svg`} />
       <img className="DeadSpace second" src={`${import.meta.env.BASE_URL}DeadSpace.svg`} />
