@@ -1,0 +1,13 @@
+.RandomText {
+  display: inline-block;
+  color: hsl(0, 100%, 95%);
+  text-shadow: -0.5px -1px 0px hsl(from currentColor h s calc(l - 40));
+
+  span {
+    margin-left: 0.5em;
+  }
+
+  &--text {
+    font-family: monospace;
+  }
+}

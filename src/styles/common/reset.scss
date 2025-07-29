@@ -29,6 +29,10 @@ button {
   border: 0;
 }
 
+foreignObject {
+  overflow: visible;
+}
+
 :focus-visible {
   outline: none;
 }

@@ -33,10 +33,35 @@
     }
   }
 
-  .DeadSpace {
+  img {
     position: absolute;
-    left: 40px;
-    bottom: 40px;
+  }
+
+  .DeadSpace {
     width: 150px;
+
+    &.first {
+      left: 40px;
+      top: 40px;
+    }
+
+    &.second {
+      right: 40px;
+      bottom: 40px;
+    }
+  }
+
+  .RestrictedSpace {
+    --sector-color: hsl(0, 66%, 33%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 600px;
+
+    &__Logo {
+      bottom: -35px;
+      left: -175px;
+      width: 150px;
+    }
   }
 }

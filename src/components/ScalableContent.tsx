@@ -1,4 +1,4 @@
-import { Circles, SectorBorders, Stars } from ".";
+import { NonInteractive, SectorBorders, Stars } from ".";
 
 export default function ScalableContent() {
   return (
@@ -7,7 +7,7 @@ export default function ScalableContent() {
         <SectorBorders />
         <Stars />
       </svg>
-      <Circles />
+      <NonInteractive />
     </div>
   );
 }

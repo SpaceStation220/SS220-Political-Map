@@ -10,6 +10,7 @@ interface StarProps {
   x: number;
   y: number;
   radius: number;
+  color: number;
   opacity: number;
   twinkleSpeed: number | null;
 }
@@ -27,7 +28,7 @@ export function StarsBackground(props: StarBackgroundProps) {
   const {
     starDensity = 0.0002,
     allStarsTwinkle = true,
-    twinkleProbability = 0.75,
+    twinkleProbability = 0.5,
     minTwinkleSpeed = 0.5,
     maxTwinkleSpeed = 1,
   } = props;
@@ -39,13 +40,16 @@ export function StarsBackground(props: StarBackgroundProps) {
   const generateStars = useCallback(
     (width: number, height: number): StarProps[] => {
       const area = width * height;
+      const starHues = [220, 240, 45, 35, 15];
       const numStars = Math.floor(area * starDensity);
       return Array.from({ length: numStars }, () => {
         const shouldTwinkle = allStarsTwinkle || Math.random() < twinkleProbability;
+        console.log(starHues[Math.floor(Math.random() * starHues.length)]);
         return {
           x: Math.random() * width,
           y: Math.random() * height,
-          radius: Math.random() * 0.1 + 1,
+          radius: Math.random() * 0.05 + 0.5,
+          color: starHues[Math.floor(Math.random() * starHues.length)],
           opacity: Math.random() * 0.25 + 0.5,
           twinkleSpeed: shouldTwinkle ? minTwinkleSpeed + Math.random() * (maxTwinkleSpeed - minTwinkleSpeed) : null,
         };
@@ -108,7 +112,7 @@ export function StarsBackground(props: StarBackgroundProps) {
       stars.forEach((star) => {
         ctx.beginPath();
         ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(201, 219, 255, ${star.opacity})`;
+        ctx.fillStyle = `hsla(${star.color}, 100%, 90%, ${star.opacity})`;
         ctx.fill();
 
         if (star.twinkleSpeed !== null) {

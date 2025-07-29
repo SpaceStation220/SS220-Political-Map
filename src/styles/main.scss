@@ -12,11 +12,12 @@
 @include meta.load-css("components/Sector.scss");
 @include meta.load-css("components/Star.scss");
 @include meta.load-css("components/Coordinates.scss");
-@include meta.load-css("components/StaticObjects.scss");
+@include meta.load-css("components/NonInteractive.scss");
 @include meta.load-css("components/MoreInfo.scss");
 @include meta.load-css("components/Loading.scss");
 @include meta.load-css("components/Preferences.scss");
 @include meta.load-css("components/Tooltip.scss");
+@include meta.load-css("components/RandomText.scss");
 
 .Overlay {
   pointer-events: none;

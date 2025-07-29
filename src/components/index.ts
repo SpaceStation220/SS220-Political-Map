@@ -1,9 +1,10 @@
 export { Button } from "./Button";
-export { Circles } from "./Circles";
 export { Coordinates } from "./Coordinates";
 export { HideButton } from "./HideButton";
 export { Loading } from "./Loading";
 export { MoreInfo } from "./MoreInfo";
+export { NonInteractive } from "./NonInteractive";
+export { RandomText } from "./RandomText";
 export { SectorBorders } from "./SectorBorders";
 export { Sidebar } from "./Sidebar";
 export { Stars } from "./Stars";
