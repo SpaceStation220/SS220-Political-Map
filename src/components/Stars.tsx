@@ -3,10 +3,10 @@ import { classes } from "tgui-core/react";
 
 import { stringToId, typeToPath } from "../common/helpers";
 import { STAR_TYPE, stars } from "../common/sectors";
-import { textVisibilityStore } from "../common/textVisibility";
+import { store } from "../common/store";
 
 export function Stars() {
-  const textVisible = useSyncExternalStore(textVisibilityStore.subscribe, textVisibilityStore.get);
+  const textVisible = useSyncExternalStore(store.subscribe, store.get);
 
   const starElements = useMemo(() => {
     return stars.map((star) => {

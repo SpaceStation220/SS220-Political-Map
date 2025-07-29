@@ -27,6 +27,7 @@
   display: flex;
   flex-direction: column;
   width: 25rem;
+  max-height: 50vh;
   padding: 0.75em;
   background-color: var(--color-base);
   border: 2px solid var(--color-primary);
@@ -89,6 +90,10 @@
   }
 
   &__Relationships {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
     &--title {
       font-size: 20px;
       font-weight: 600;
@@ -96,6 +101,8 @@
     }
 
     &--content {
+      overflow: auto;
+      scrollbar-width: thin;
       white-space: break-spaces;
     }
   }

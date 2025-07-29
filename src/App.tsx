@@ -3,7 +3,7 @@ import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
 import { Stack } from "tgui-core/components";
 
 import { maxScale, minScale } from "./common/constants";
-import { textVisibilityStore } from "./common/textVisibility";
+import { store } from "./common/store";
 import { Coordinates, Loading, Sidebar, StarsBackground } from "./components";
 
 const ScalableContent = lazy(() => import("./components/ScalableContent"));
@@ -22,11 +22,15 @@ function App() {
   }
 
   function handleTransformed({ state }) {
+    if (mapScale.current !== state.scale) {
+      store.closeFloatingUI();
+    }
+
     mapScale.current = state.scale;
 
     const visible = state.scale > maxScale * 0.66;
-    if (textVisibilityStore.get() !== visible) {
-      textVisibilityStore.set(visible);
+    if (store.get() !== visible) {
+      store.set(visible);
     }
 
     if (dragStarted.current && !dragStartPosition.current) {

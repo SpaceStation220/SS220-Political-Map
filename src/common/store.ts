@@ -1,9 +1,8 @@
-import { createContext } from "react";
-
 let visible = false;
+let version = 0;
 const listeners = new Set<() => void>();
 
-export const textVisibilityStore = {
+export const store = {
   get: () => visible,
   set: (v: boolean) => {
     if (visible !== v) {
@@ -11,10 +10,15 @@ export const textVisibilityStore = {
       listeners.forEach((l) => l());
     }
   },
+  closeFloatingUI: () => {
+    version++;
+    listeners.forEach((l) => l());
+  },
+  getVersion: () => version,
   subscribe: (cb: () => void) => {
     listeners.add(cb);
-    return () => listeners.delete(cb);
+    return () => {
+      listeners.delete(cb);
+    };
   },
 };
-
-export const TextVisibilityContext = createContext(textVisibilityStore);

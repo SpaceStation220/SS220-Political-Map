@@ -13,8 +13,10 @@ import {
   useInteractions,
   useTransitionStatus,
 } from "@floating-ui/react";
-import { cloneElement, isValidElement, ReactElement, useRef, useState } from "react";
+import { cloneElement, isValidElement, ReactElement, useEffect, useRef, useState } from "react";
 import { LabeledList } from "tgui-core/components";
+
+import { store } from "../common/store";
 
 export function MoreInfo(props) {
   const { children, content } = props;
@@ -70,6 +72,18 @@ export function MoreInfo(props) {
   } else {
     floatingChildren = <div {...referenceProps}>{children}</div>;
   }
+
+  const versionRef = useRef(store.getVersion());
+
+  useEffect(() => {
+    return store.subscribe(() => {
+      const newVersion = store.getVersion();
+      if (newVersion !== versionRef.current) {
+        versionRef.current = newVersion;
+        setIsOpen(false);
+      }
+    });
+  }, []);
 
   const moreInfoContent = (
     <div

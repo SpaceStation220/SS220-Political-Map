@@ -2,10 +2,10 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 import { useSyncExternalStore } from "react";
 
 import { CIRCLE_TEXT_INDENT } from "../common/constants";
-import { textVisibilityStore } from "../common/textVisibility";
+import { store } from "../common/store";
 
 export function Circles() {
-  const translucent = useSyncExternalStore(textVisibilityStore.subscribe, textVisibilityStore.get);
+  const translucent = useSyncExternalStore(store.subscribe, store.get);
   const [circlesDisabled] = useLocalStorage("circles-disabled", false);
 
   function calcTextIndent(radius: number) {
