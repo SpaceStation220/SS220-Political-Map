@@ -1,6 +1,6 @@
 import { Geom } from "polygon-clipping";
 
-export const minScale = 0.5;
+export const minScale = 0.75;
 export const maxScale = 3.5;
 
 export const CIRCLE_TEXT_INDENT = 11;

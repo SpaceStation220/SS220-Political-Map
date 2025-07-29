@@ -57,7 +57,7 @@ function App() {
           smooth={false}
           alignmentAnimation={{ sizeX: 220, sizeY: 220 }}
           minScale={minScale}
-          initialScale={minScale * 1.5}
+          initialScale={minScale}
           maxScale={maxScale}
           wheel={{ step: minScale / 6 }}
           doubleClick={{ disabled: true }}
