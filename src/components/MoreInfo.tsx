@@ -13,7 +13,7 @@ import {
   useInteractions,
   useTransitionStatus,
 } from "@floating-ui/react";
-import { cloneElement, isValidElement, ReactElement, useEffect, useRef, useState } from "react";
+import { cloneElement, ReactElement, useEffect, useMemo, useRef, useState } from "react";
 import { LabeledList } from "tgui-core/components";
 
 import { store } from "../common/store";
@@ -26,8 +26,9 @@ export function MoreInfo(props) {
 
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
+    onOpenChange: setIsOpen,
     middleware: [
-      offset(6),
+      offset(24),
       flip({ padding: 6 }),
       shift(),
       arrow({
@@ -35,9 +36,7 @@ export function MoreInfo(props) {
         padding: 10,
       }),
     ],
-    onOpenChange(isOpen) {
-      setIsOpen(isOpen);
-    },
+    placement: "top",
     whileElementsMounted(referenceEl, floatingEl, update) {
       const cleanup = autoUpdate(referenceEl, floatingEl, update, {
         animationFrame: true,
@@ -53,7 +52,7 @@ export function MoreInfo(props) {
   const click = useClick(context, {
     enabled: !document.documentElement.classList.contains("dragging"),
   });
-  const dismiss = useDismiss(context, { ancestorScroll: true });
+  const dismiss = useDismiss(context);
   const clientPoint = useClientPoint(context, { enabled: !isMounted });
   const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, clientPoint]);
 
@@ -61,18 +60,7 @@ export function MoreInfo(props) {
     ref: refs.setReference,
   });
 
-  const floatingProps = getFloatingProps({
-    ref: refs.setFloating,
-  });
-
-  // Generate our children which will be used as reference
-  let floatingChildren: ReactElement;
-  if (isValidElement(children)) {
-    floatingChildren = cloneElement(children as ReactElement, referenceProps);
-  } else {
-    floatingChildren = <div {...referenceProps}>{children}</div>;
-  }
-
+  const floatingChildren: ReactElement = cloneElement(children as ReactElement, referenceProps);
   const versionRef = useRef(store.getVersion());
 
   useEffect(() => {
@@ -87,13 +75,14 @@ export function MoreInfo(props) {
 
   const moreInfoContent = (
     <div
-      className="MoreInfo--wrapper"
+      ref={refs.setFloating}
       data-position={context.placement}
       data-transition={status}
-      style={{ ...floatingStyles }}
-      {...floatingProps}
+      className="MoreInfo--wrapper"
+      style={floatingStyles}
+      {...getFloatingProps()}
     >
-      <FloatingArrow ref={arrowRef} context={context} fill="var(--color-primary" width={20} height={10} />
+      <FloatingArrow ref={arrowRef} context={context} fill="var(--color-primary)" width={20} height={10} />
       <div className="MoreInfo"> {content}</div>
     </div>
   );
@@ -110,29 +99,32 @@ export function MoreInfoSector(props) {
   const { children, sector } = props;
   const NO_DATA = "Нет данных";
 
-  const sectorInfo = (
-    <>
-      <div className="MoreInfo__Title">
-        {sector.logo && <img className="MoreInfo__TitleIcon" src={sector.logo} />}
-        <div className="MoreInfo__TitleContent">
-          <div className="MoreInfo__TitleContent--name">{sector.name}</div>
-          <div className="MoreInfo__TitleContent--regin">{sector.regin || NO_DATA}</div>
+  const sectorInfo = useMemo(
+    () => (
+      <>
+        <div className="MoreInfo__Title">
+          {sector.logo && <img className="MoreInfo__TitleIcon" src={sector.logo} />}
+          <div className="MoreInfo__TitleContent">
+            <div className="MoreInfo__TitleContent--name">{sector.name}</div>
+            <div className="MoreInfo__TitleContent--regin">{sector.regin || NO_DATA}</div>
+          </div>
         </div>
-      </div>
-      <hr />
-      <div className="MoreInfo__Content">
-        <LabeledList>
-          <LabeledList.Item label="Текущий глава">{sector.head || NO_DATA}</LabeledList.Item>
-          <LabeledList.Item label="Население">{sector.population || NO_DATA}</LabeledList.Item>
-          <LabeledList.Item label="ВВП">{sector.gdp || NO_DATA}</LabeledList.Item>
-        </LabeledList>
-      </div>
-      <hr />
-      <div className="MoreInfo__Relationships">
-        <div className="MoreInfo__Relationships--title">Взаимоотношения</div>
-        <div className="MoreInfo__Relationships--content">{sector.relationships || NO_DATA}</div>
-      </div>
-    </>
+        <hr />
+        <div className="MoreInfo__Content">
+          <LabeledList>
+            <LabeledList.Item label="Текущий глава">{sector.head || NO_DATA}</LabeledList.Item>
+            <LabeledList.Item label="Население">{sector.population || NO_DATA}</LabeledList.Item>
+            <LabeledList.Item label="ВВП">{sector.gdp || NO_DATA}</LabeledList.Item>
+          </LabeledList>
+        </div>
+        <hr />
+        <div className="MoreInfo__Relationships">
+          <div className="MoreInfo__Relationships--title">Взаимоотношения</div>
+          <div className="MoreInfo__Relationships--content">{sector.relationships || NO_DATA}</div>
+        </div>
+      </>
+    ),
+    [sector]
   );
 
   return <MoreInfo content={sectorInfo}>{children}</MoreInfo>;

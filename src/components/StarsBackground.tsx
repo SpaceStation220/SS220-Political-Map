@@ -26,7 +26,7 @@ interface StarBackgroundProps {
 
 export function StarsBackground(props: StarBackgroundProps) {
   const {
-    starDensity = 0.0002,
+    starDensity = 0.000175,
     allStarsTwinkle = true,
     twinkleProbability = 0.5,
     minTwinkleSpeed = 0.5,
@@ -44,7 +44,6 @@ export function StarsBackground(props: StarBackgroundProps) {
       const numStars = Math.floor(area * starDensity);
       return Array.from({ length: numStars }, () => {
         const shouldTwinkle = allStarsTwinkle || Math.random() < twinkleProbability;
-        console.log(starHues[Math.floor(Math.random() * starHues.length)]);
         return {
           x: Math.random() * width,
           y: Math.random() * height,
@@ -106,8 +105,7 @@ export function StarsBackground(props: StarBackgroundProps) {
       return;
     }
 
-    let animationFrameId: number;
-    const render = () => {
+    const intervalId = setInterval(() => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       stars.forEach((star) => {
         ctx.beginPath();
@@ -119,13 +117,10 @@ export function StarsBackground(props: StarBackgroundProps) {
           star.opacity = 0.25 + Math.abs(Math.sin((Date.now() * 0.001) / star.twinkleSpeed) * 0.5);
         }
       });
-
-      animationFrameId = requestAnimationFrame(render);
-    };
-    render();
+    }, 50);
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      clearInterval(intervalId);
     };
   }, [stars, spaceBackground]);
 
