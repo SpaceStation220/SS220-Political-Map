@@ -30,7 +30,7 @@ export function Circles() {
           </text>
         </svg>
       )}
-      <img className="DeadSpace" src="/DeadSpace.svg" />
+      <img className="DeadSpace" src={`${import.meta.env.BASE_URL}DeadSpace.svg`} />
     </div>
   );
 }

@@ -28,7 +28,7 @@ export function Sidebar() {
 function SidebarHeader() {
   return (
     <div className="Sidebar__Header">
-      <img src="/SS220.svg" />
+      <img src={`${import.meta.env.BASE_URL}SS220.svg`} />
       <span>Политическая карта</span>
     </div>
   );
