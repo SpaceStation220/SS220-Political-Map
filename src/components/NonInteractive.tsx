@@ -45,11 +45,11 @@ export function NonInteractive() {
           </text>
         </svg>
       )}
-      <img className="RestrictedSpace__Logo" src={`${import.meta.env.BASE_URL}RestrictedLogo.svg`} />
-      <img className="NorthSign" src={`${import.meta.env.BASE_URL}NorthSign.svg`} />
-      <img className="NorthEastSign" src={`${import.meta.env.BASE_URL}NorthEastSign.svg`} />
-      <img className="DeadSpace first" src={`${import.meta.env.BASE_URL}DeadSpace.svg`} />
-      <img className="DeadSpace second" src={`${import.meta.env.BASE_URL}DeadSpace.svg`} />
+      <img className="RestrictedSpace__Logo" src={`${import.meta.env.BASE_URL}/logo/RestrictedTransparent.svg`} />
+      <img className="NorthSign" src={`${import.meta.env.BASE_URL}/assets/NorthSign.svg`} />
+      <img className="NorthEastSign" src={`${import.meta.env.BASE_URL}/assets/NorthEastSign.svg`} />
+      <img className="DeadSpace first" src={`${import.meta.env.BASE_URL}/assets/DeadSpace.svg`} />
+      <img className="DeadSpace second" src={`${import.meta.env.BASE_URL}/assets/DeadSpace.svg`} />
     </div>
   );
 }

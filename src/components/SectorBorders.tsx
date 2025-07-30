@@ -84,7 +84,7 @@ export function SectorBorders() {
               />
               {sector.logo && logoSize > 0 && (
                 <image
-                  href={`${import.meta.env.BASE_URL}${sector.logo}`}
+                  href={`${import.meta.env.BASE_URL}/logo/${sector.logo}.svg`}
                   x={logoX - logoSize / 2}
                   y={logoY - logoSize / 2}
                   width={logoSize}
