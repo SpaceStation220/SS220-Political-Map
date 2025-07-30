@@ -5,8 +5,8 @@ import { Input, Stack } from "tgui-core/components";
 import { useFuzzySearch } from "tgui-core/fuzzysearch";
 import { classes } from "tgui-core/react";
 
+import { Stars } from "../common";
 import { stringToId } from "../common/helpers";
-import { stars } from "../common/sectors";
 import { Star } from "../common/types";
 import { Button } from "./Button";
 import { HideButton } from "./HideButton";
@@ -36,12 +36,12 @@ function SidebarHeader() {
 
 function SidebarContent() {
   const { query, setQuery, results } = useFuzzySearch({
-    searchArray: stars.map((s) => s.name),
+    searchArray: Stars.map((s) => s.name),
     matchStrategy: "smart",
     getSearchString: (name) => name,
   });
 
-  const filteredStars = query ? stars.filter((star) => results.includes(star.name)) : stars;
+  const filteredStars = query ? Stars.filter((star) => results.includes(star.name)) : Stars;
 
   const sectors: Record<string, Star[]> = {};
   for (const star of filteredStars) {

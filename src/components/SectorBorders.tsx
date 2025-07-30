@@ -2,21 +2,21 @@ import { Delaunay } from "d3-delaunay";
 import polygonClipping, { type MultiPolygon } from "polygon-clipping";
 import { CSSProperties, useMemo } from "react";
 
+import { Nations, Stars } from "../common";
 import { POPULATED_SYSTEMS } from "../common/constants";
 import { findBestLogoPositionAndSize } from "../common/helpers";
-import { Nations, stars } from "../common/sectors";
 import { MergedSectorType } from "../common/types";
 import { MoreInfo } from "./MoreInfo";
 
 export function SectorBorders() {
   const mergedSectors = useMemo(() => {
     const delaunay = Delaunay.from(
-      stars,
+      Stars,
       (d) => d.position.x,
       (d) => d.position.y
     );
     const voronoi = delaunay.voronoi([0, 0, 1024, 1024]);
-    const polygons = stars.map((_, i) => voronoi.cellPolygon(i));
+    const polygons = Stars.map((_, i) => voronoi.cellPolygon(i));
 
     const sectorPolygons: { [affiliation: string]: MultiPolygon } = {};
     polygons.forEach((polygon, i) => {
@@ -24,7 +24,7 @@ export function SectorBorders() {
         return;
       }
 
-      const star = stars[i];
+      const star = Stars[i];
       const key = star.affiliation.name;
       if (!sectorPolygons[key]) {
         sectorPolygons[key] = [];

@@ -1,4 +1,4 @@
-import { STAR_TYPE } from "./sectors";
+import { STAR_TYPE } from "./stars";
 
 export const typeToPath: { [key in STAR_TYPE]: string } = {
   [STAR_TYPE.Capital]:

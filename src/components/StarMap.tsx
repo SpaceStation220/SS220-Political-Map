@@ -1,15 +1,15 @@
 import { CSSProperties, useMemo, useSyncExternalStore } from "react";
 import { classes } from "tgui-core/react";
 
+import { STAR_TYPE, Stars } from "../common";
 import { stringToId, typeToPath } from "../common/helpers";
-import { STAR_TYPE, stars } from "../common/sectors";
 import { store } from "../common/store";
 
-export function Stars() {
+export function StarMap() {
   const textVisible = useSyncExternalStore(store.subscribe, store.get);
 
   const starElements = useMemo(() => {
-    return stars.map((star) => {
+    return Stars.map((star) => {
       const color = star.affiliation.color;
       const path = typeToPath[star.type] || typeToPath[STAR_TYPE.Controlled];
       const transform = `translate(${star.position.x}, ${star.position.y}) scale(2)`;

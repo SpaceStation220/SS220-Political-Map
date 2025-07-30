@@ -7,5 +7,5 @@ export { NonInteractive } from "./NonInteractive";
 export { RandomText } from "./RandomText";
 export { SectorBorders } from "./SectorBorders";
 export { Sidebar } from "./Sidebar";
-export { Stars } from "./Stars";
+export { StarMap } from "./StarMap";
 export { StarsBackground } from "./StarsBackground";
