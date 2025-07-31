@@ -1,4 +1,6 @@
 .MoreInfo--wrapper {
+  z-index: 3;
+
   &[data-transition="close"],
   &[data-transition="initial"] {
     .MoreInfo {

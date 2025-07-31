@@ -204,11 +204,7 @@ export function MoreInfoStar(props) {
         <>
           <div ref={contentRef} className="MoreInfo__PlanetTitle">
             {selectedPlanet.image ? (
-              <LazyLoadImage
-                effect="blur"
-                placeholderSrc={`${import.meta.env.BASE_URL}/planets/${selectedPlanet.image}`}
-                src={`${import.meta.env.BASE_URL}/planets/${selectedPlanet.image}`}
-              />
+              <LazyLoadImage effect="blur" src={`${import.meta.env.BASE_URL}/planets/${selectedPlanet.image}`} />
             ) : (
               <span />
             )}

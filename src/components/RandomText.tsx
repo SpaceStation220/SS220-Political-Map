@@ -11,7 +11,7 @@ export function RandomText({ children }: { children?: ReactNode }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setText(randomText());
-    }, 75);
+    }, 100);
 
     return () => clearInterval(interval);
   }, []);
