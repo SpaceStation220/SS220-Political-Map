@@ -10,9 +10,9 @@
   /* Main colors */
   --color-base: hsla(0, 0%, 0%, 0.5);
   --color-primary: hsl(200, 75%, 33%);
-  --color-text: hsl(0, 0%, 90%);
-  --color-text-translucent: hsla(0, 0%, 100%, 0.5);
-  --color-text-translucent-light: hsla(0, 0%, 100%, 0.75);
+  --color-text: hsl(from var(--color-primary) h 50 90);
+  --color-text-translucent: hsl(from var(--color-text) h s l / 0.5);
+  --color-text-translucent-light: hsl(from var(--color-text) h s l / 0.75);
   --color-border: hsla(0, 0%, 100%, 0.1);
 
   /* Candystripe */

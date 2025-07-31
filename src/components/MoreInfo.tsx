@@ -204,7 +204,11 @@ export function MoreInfoStar(props) {
         <>
           <div ref={contentRef} className="MoreInfo__PlanetTitle">
             {selectedPlanet.image ? (
-              <LazyLoadImage effect="blur" src={`${import.meta.env.BASE_URL}/planets/${selectedPlanet.image}`} />
+              <LazyLoadImage
+                effect="blur"
+                placeholderSrc={`${import.meta.env.BASE_URL}/planets/${selectedPlanet.image}`}
+                src={`${import.meta.env.BASE_URL}/planets/${selectedPlanet.image}`}
+              />
             ) : (
               <span />
             )}
@@ -216,7 +220,7 @@ export function MoreInfoStar(props) {
             </div>
             <Stack vertical className="MoreInfo__PlanetTitle--population" g={0}>
               <Stack.Item>Население</Stack.Item>
-              <Stack.Item>{selectedPlanet.population}</Stack.Item>
+              <Stack.Item>{selectedPlanet.population || "Необитаема"}</Stack.Item>
             </Stack>
             <Tooltip content={sciTooltip} position="bottom-end">
               <div className="MoreInfo__PlanetTitle--sci">
@@ -224,8 +228,11 @@ export function MoreInfoStar(props) {
                 {selectedPlanet.sci}
               </div>
             </Tooltip>
-            <Stack vertical className="MoreInfo__Content">
-              {selectedPlanet.description}
+            <Stack vertical className="MoreInfo__Content" g={2}>
+              {selectedPlanet.biggestCities && (
+                <InfoSection title="Крупнейшие города">{selectedPlanet.biggestCities}</InfoSection>
+              )}
+              <InfoSection title="Описание">{selectedPlanet.description}</InfoSection>
             </Stack>
           </div>
           <hr />
@@ -257,5 +264,17 @@ function TitledInfo(props) {
       <div className="MoreInfo__TitledInfo--title">{title}</div>
       <div className="MoreInfo__TitledInfo--content">{children}</div>
     </div>
+  );
+}
+
+function InfoSection(props) {
+  const { children, title } = props;
+  return (
+    <Stack.Item>
+      <Stack.Item bold fontSize={1.33}>
+        {title}
+      </Stack.Item>
+      <Stack.Item>{children}</Stack.Item>
+    </Stack.Item>
   );
 }
