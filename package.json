@@ -20,6 +20,7 @@
     "polygon-clipping": "^0.15.7",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-lazy-load-image-component": "^1.6.3",
     "react-zoom-pan-pinch": "^3.7.0",
     "sass": "^1.89.2",
     "tgui-core": "^4.3.4"

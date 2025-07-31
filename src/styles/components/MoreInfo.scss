@@ -58,11 +58,11 @@
     align-items: center;
     font-size: calc(var(--font-size-int) * 0.8);
     gap: 0.75rem;
-    margin: 0.5rem;
+    padding: 0.5rem;
 
     &:first-of-type {
       font-size: var(--font-size-int);
-      margin: 0.5rem 0.75rem;
+      padding: 0.5rem 0.75rem;
     }
 
     &Icon {
@@ -90,18 +90,83 @@
     }
   }
 
+  &__PlanetTitle {
+    user-select: none;
+    position: relative;
+    overflow: auto;
+    scrollbar-width: thin;
+    display: grid;
+    grid-template-areas: "stack";
+    height: 23vh;
+
+    img,
+    > span {
+      grid-area: stack;
+      object-fit: cover;
+      width: 100%;
+      height: inherit;
+      mask-image: linear-gradient(to bottom, black calc(100% - 5rem), transparent);
+    }
+
+    &--sci {
+      grid-area: stack;
+      cursor: help;
+      position: absolute;
+      top: 0.5em;
+      right: 0.33em;
+      padding: 0.1em 0.33em;
+      color: var(--color-text-translucent);
+      border-radius: 0.25em;
+      transition-property: background-color, color;
+      transition-duration: var(--transition-duration);
+
+      &:hover {
+        background-color: hsla(0, 0%, 100%, 0.15);
+        color: var(--color-text);
+      }
+
+      .Icon {
+        font-size: 0.9em;
+        margin-right: 0.33em;
+      }
+    }
+
+    &--population {
+      grid-area: stack;
+      position: absolute;
+      top: 0.5em;
+      left: 0.5em;
+      text-shadow: 1px 1px 2px black;
+
+      div:last-child {
+        font-size: 0.75em;
+        color: var(--color-text-translucent);
+      }
+    }
+
+    .MoreInfo__Title {
+      grid-area: stack;
+      align-self: end;
+      z-index: 1;
+    }
+  }
+
+  &__SCITooltip {
+    max-width: 400px;
+
+    &--subtitle {
+      font-size: 0.8em;
+      margin-bottom: 1lh;
+      color: var(--color-text-translucent);
+    }
+  }
+
   &__Content {
+    user-select: text;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
     padding: 0.33rem 0.5rem;
-
-    &.scrollable {
-      flex: 1;
-      overflow: auto;
-      scrollbar-width: thin;
-      padding-top: 0;
-    }
   }
 
   // MARK: TODO: Переделать

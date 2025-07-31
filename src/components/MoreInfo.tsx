@@ -1,3 +1,5 @@
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 import {
   autoUpdate,
   FloatingPortal,
@@ -11,8 +13,10 @@ import {
   useTransitionStatus,
 } from "@floating-ui/react";
 import { cloneElement, ReactElement, useEffect, useMemo, useRef, useState } from "react";
-import { Stack, Tabs } from "tgui-core/components";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Icon, Stack, Tabs, Tooltip } from "tgui-core/components";
 
+import { SCI } from "../common/planets";
 import { store } from "../common/store";
 import { Planet } from "../common/types";
 
@@ -119,12 +123,47 @@ export function MoreInfoSector(props) {
 
 MoreInfo.Sector = MoreInfoSector;
 
+type SCIItem = { desc: string; subtypes?: Record<string, string> };
+
 export function MoreInfoStar(props) {
   const { children, star } = props;
   const [tab, setTab] = useState("description");
 
   const planets = useMemo(() => Object.values(star.planets) as Planet[], [star]);
   const [selectedPlanet, setSelectedPlanet] = useState<Planet | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    contentRef.current?.scrollTo?.({ top: 0 });
+  }, [tab, selectedPlanet]);
+
+  const sciTooltip = useMemo(
+    () => (
+      <div className="MoreInfo__SCITooltip">
+        <div className="MoreInfo__SCITooltip--title">Классификация CSI - Colonization Suitability Index</div>
+        <div className="MoreInfo__SCITooltip--subtitle">
+          Терраформированные планеты, обозначены иконкой <Icon name="leaf" />
+        </div>
+        <ol type="I">
+          {Object.entries(SCI).map(([type, item]: [string, SCIItem]) => (
+            <li key={type}>
+              {item.desc}
+              {item.subtypes && (
+                <ol>
+                  {Object.entries(item.subtypes).map(([subtype, text]) => (
+                    <li key={subtype}>
+                      {subtype}. {text}
+                    </li>
+                  ))}
+                </ol>
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+    ),
+    []
+  );
 
   const starInfo = (
     <>
@@ -156,23 +195,39 @@ export function MoreInfoStar(props) {
         </Tabs>
       )}
       <hr />
-      {tab === "description" && <div className="MoreInfo__Content star">{star.description}</div>}
+      {tab === "description" && (
+        <div ref={contentRef} className="MoreInfo__Content star">
+          {star.description}
+        </div>
+      )}
       {tab === "planets" && selectedPlanet && (
         <>
-          <div className="MoreInfo__Title">
-            <div className="MoreInfo__TitleContent">
-              <div className="MoreInfo__TitleContent--name">
-                <Stack fill>
-                  <Stack.Item grow>{selectedPlanet.name}</Stack.Item>
-                  <Stack.Item fontSize={1}>
-                    <Stack align="center">{selectedPlanet.sci}</Stack>
-                  </Stack.Item>
-                </Stack>
+          <div ref={contentRef} className="MoreInfo__PlanetTitle">
+            {selectedPlanet.image ? (
+              <LazyLoadImage effect="blur" src={`${import.meta.env.BASE_URL}/planets/${selectedPlanet.image}`} />
+            ) : (
+              <span />
+            )}
+            <div className="MoreInfo__Title">
+              <div className="MoreInfo__TitleContent">
+                <div className="MoreInfo__TitleContent--name">{selectedPlanet.name}</div>
+                <div className="MoreInfo__TitleContent--subtitle">{selectedPlanet.subtitle}</div>
               </div>
-              <div className="MoreInfo__TitleContent--subtitle">{selectedPlanet.subtitle}</div>
             </div>
+            <Stack vertical className="MoreInfo__PlanetTitle--population" g={0}>
+              <Stack.Item>Население</Stack.Item>
+              <Stack.Item>{selectedPlanet.population}</Stack.Item>
+            </Stack>
+            <Tooltip content={sciTooltip} position="bottom-end">
+              <div className="MoreInfo__PlanetTitle--sci">
+                {selectedPlanet.terraformed && <Icon name="leaf" />}
+                {selectedPlanet.sci}
+              </div>
+            </Tooltip>
+            <Stack vertical className="MoreInfo__Content">
+              {selectedPlanet.description}
+            </Stack>
           </div>
-          <div className="MoreInfo__Content scrollable">{selectedPlanet.description}</div>
           <hr />
           <Tabs>
             {planets.map((planet: Planet) => (

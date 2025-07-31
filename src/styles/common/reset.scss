@@ -29,10 +29,25 @@ button {
   border: 0;
 }
 
+ol {
+  padding: 0 1em;
+  margin: 0 0.5em 0.5em 0.25em;
+
+  ol {
+    list-style: none;
+    padding-left: 0.25em;
+  }
+}
+
 foreignObject {
   overflow: visible;
 }
 
 :focus-visible {
   outline: none;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: white;
 }
