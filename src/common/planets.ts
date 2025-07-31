@@ -46,6 +46,7 @@ export const Planets: Record<string, Planet> = {
     biggestCities: "Порт Веспера (столица)",
     population: "~74.100.000",
     sci: "II-a/c",
+    image: "Venus.jpg",
   },
   Earth: {
     name: "Земля",
@@ -66,6 +67,7 @@ export const Planets: Record<string, Planet> = {
     biggestCities: "Селена (столица), Нью-Вегас, Сент-Люменас, Меридиополис.",
     population: "~1.200.000.000",
     sci: "II-a",
+    image: "Moon.jpg",
   },
   Mars: {
     name: "Марс",
@@ -76,6 +78,7 @@ export const Planets: Record<string, Planet> = {
     population: "~12.920.000.000",
     sci: "II-a/c",
     terraformed: true,
+    image: "Mars.jpg",
   },
   Ganimed: {
     name: "Ганимед",
@@ -83,6 +86,7 @@ export const Planets: Record<string, Planet> = {
     description:
       "Один из спутников Юпитера, крупнейший спутник в Солнечной системе. После открытия форона, поверхность и орбита Ганимеда в считаные десятилетия обросла перерабатывающими комплексами и транспортными хабами, обеспечивающими первые поставки пурпурного золота. На сегодняшний день, ввиду быстрого истощения запасов плазмы в атмосфере Юпитера, все предприятия заброшены, а их место заняли судостроительные верфи корпораций.",
     sci: "V",
+    image: "Ganimed.jpg",
   },
   Europe: {
     name: "Европа",
@@ -90,6 +94,7 @@ export const Planets: Record<string, Planet> = {
     description:
       "Небольшой спутник Юпитера, прославившийся обнаружением первой внеземной жизни в виде сложноорганизованной глубоководной флоры и фауны. На поверхности расположены множественные исследовательские и горнодобывающие комплексы, нацеленные на изучение (в прошлом) и разработку водяного океана Европы, сокрытого под толстым слоем льда.",
     sci: "V",
+    image: "Europe.jpg",
   },
   Titan: {
     name: "Титан",
@@ -99,6 +104,7 @@ export const Planets: Record<string, Planet> = {
     population: "~40.000.000",
     biggestCities: "Хельдштадт (столица)",
     sci: "III-a",
+    image: "Titan.jpg",
   },
   Pluto: {
     name: "Плутон",
@@ -108,5 +114,6 @@ export const Planets: Record<string, Planet> = {
     population: "~19.600.000",
     biggestCities: "Нью-Джеймстаун (столица), Гефеста.",
     sci: "III-a/e",
+    image: "Pluto.jpg",
   },
 } as const;
