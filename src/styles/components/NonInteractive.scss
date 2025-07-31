@@ -22,18 +22,19 @@
     stroke: yellow;
     stroke-width: 2px;
     stroke-dasharray: 15 15;
-    animation: stroke-spin 5s infinite linear;
+    transform-origin: center;
+    animation: circle-spin 240s infinite linear;
 
     ~ text {
       fill: yellow;
     }
 
-    @keyframes stroke-spin {
+    @keyframes circle-spin {
       from {
-        stroke-dashoffset: 0;
+        transform: rotate(0deg);
       }
       to {
-        stroke-dashoffset: 30;
+        transform: rotate(360deg);
       }
     }
   }
