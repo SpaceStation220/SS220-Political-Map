@@ -57,3 +57,17 @@
     0 0
   );
 }
+
+.blur-disabled:root {
+  --blur: none;
+  --color-base: black;
+
+  .MoreInfo {
+    --clip-size: 0px;
+
+    &:before,
+    &:after {
+      content: unset;
+    }
+  }
+}
