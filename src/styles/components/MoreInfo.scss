@@ -4,10 +4,6 @@
     .MoreInfo {
       --clip-size: 100%;
     }
-
-    svg {
-      opacity: 0;
-    }
   }
 
   &[data-transition="open"],
@@ -16,10 +12,6 @@
       transition-property: --clip-size;
       transition-duration: var(--transition-duration);
     }
-
-    svg {
-      transition: opacity var(--transition-duration);
-    }
   }
 }
 
@@ -27,8 +19,7 @@
   display: flex;
   flex-direction: column;
   width: 25rem;
-  max-height: 50vh;
-  padding: 0.75em;
+  max-height: 40vh;
   background-color: var(--color-base);
   border: 2px solid var(--color-primary);
   backdrop-filter: var(--blur);
@@ -62,9 +53,17 @@
   }
 
   &__Title {
+    --font-size-int: 32px;
     display: flex;
-    gap: 0.75em;
     align-items: center;
+    font-size: calc(var(--font-size-int) * 0.8);
+    gap: 0.75rem;
+    margin: 0.5rem;
+
+    &:first-of-type {
+      font-size: var(--font-size-int);
+      margin: 0.5rem 0.75rem;
+    }
 
     &Icon {
       width: 64px;
@@ -74,25 +73,43 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      line-height: 1.667em;
-      min-height: 64px;
+      gap: 3px;
+      width: 100%;
 
       &--name {
-        font-size: 32px;
+        line-height: 0.95em;
+        font-size: 1em;
         font-weight: 700;
       }
 
-      &--regin {
-        font-size: 13px;
+      &--subtitle {
+        line-height: 1.25em;
+        font-size: 0.45em;
         color: var(--color-text-translucent);
       }
     }
   }
 
-  &__Relationships {
+  &__Content {
     display: flex;
     flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.33rem 0.5rem;
+
+    &.scrollable {
+      flex: 1;
+      overflow: auto;
+      scrollbar-width: thin;
+      padding-top: 0;
+    }
+  }
+
+  // MARK: TODO: Переделать
+  &__Relationships {
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem;
 
     &--title {
       font-size: 20px;
@@ -108,9 +125,20 @@
   }
 
   hr {
-    width: 100%;
-    height: 2px;
-    background-color: var(--color-border);
-    border: 0;
+    width: 450px;
+    margin: 0 -1em;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+  }
+}
+
+.MoreInfo__TitledInfo {
+  display: flex;
+  flex-direction: column;
+
+  &--title {
+    font-weight: 700;
+    font-size: 0.75em;
+    color: hsl(from var(--color-primary) h s calc(l + 12.5));
   }
 }

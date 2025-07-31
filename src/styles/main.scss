@@ -53,8 +53,62 @@
   }
 }
 
-.LabeledList__cell:not(:first-child) {
-  padding-left: 0.5em;
+.Tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.33em;
+  margin: 0.33em;
+}
+
+.Tab {
+  --tab-color: hsl(from var(--color-primary) h 0 l);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  line-height: 2px;
+  height: 1.5em;
+  padding: 0 9px;
+  color: hsl(from var(--tab-color) h s calc(l + 20));
+  border: 2px solid;
+  border-color: var(--tab-color);
+  transition-property: border-color, color;
+  transition-duration: var(--transition-duration);
+  clip-path: polygon(0.5em 0, 100% 0, 100% calc(100% - 0.5em), calc(100% - 0.5em) 100%, 0 100%, 0 0.5em);
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    width: 13px;
+    height: 2px;
+    background-color: var(--tab-color);
+    transform: rotate(-45deg);
+    transition: background-color var(--transition-duration);
+  }
+
+  &:before {
+    top: 0;
+    left: -2px;
+  }
+
+  &:after {
+    bottom: 0;
+    right: -2px;
+  }
+
+  &:hover {
+    --tab-color: hsl(from var(--color-primary) h 0 calc(l + 12.5));
+  }
+
+  &--selected {
+    --tab-color: var(--color-primary) !important;
+    cursor: default;
+  }
 }
 
 .color-label {

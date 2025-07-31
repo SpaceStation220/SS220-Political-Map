@@ -1,8 +1,5 @@
 import {
-  arrow,
   autoUpdate,
-  flip,
-  FloatingArrow,
   FloatingPortal,
   offset,
   shift,
@@ -14,28 +11,19 @@ import {
   useTransitionStatus,
 } from "@floating-ui/react";
 import { cloneElement, ReactElement, useEffect, useMemo, useRef, useState } from "react";
-import { LabeledList } from "tgui-core/components";
+import { Stack, Tabs } from "tgui-core/components";
 
 import { store } from "../common/store";
+import { Planet } from "../common/types";
 
 export function MoreInfo(props) {
   const { children, content } = props;
 
   const [isOpen, setIsOpen] = useState(false);
-  const arrowRef = useRef(null);
-
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
-    middleware: [
-      offset(24),
-      flip({ padding: 6 }),
-      shift(),
-      arrow({
-        element: arrowRef,
-        padding: 10,
-      }),
-    ],
+    middleware: [offset(24), shift({ crossAxis: true })],
     placement: "top",
     whileElementsMounted(referenceEl, floatingEl, update) {
       const cleanup = autoUpdate(referenceEl, floatingEl, update, {
@@ -82,7 +70,6 @@ export function MoreInfo(props) {
       style={floatingStyles}
       {...getFloatingProps()}
     >
-      <FloatingArrow ref={arrowRef} context={context} fill="var(--color-primary)" width={20} height={10} />
       <div className="MoreInfo"> {content}</div>
     </div>
   );
@@ -103,19 +90,19 @@ export function MoreInfoSector(props) {
     () => (
       <>
         <div className="MoreInfo__Title">
-          {sector.logo && <img className="MoreInfo__TitleIcon" src={sector.logo} />}
+          {sector.logo && (
+            <img className="MoreInfo__TitleIcon" src={`${import.meta.env.BASE_URL}/logo/${sector.logo}.svg`} />
+          )}
           <div className="MoreInfo__TitleContent">
             <div className="MoreInfo__TitleContent--name">{sector.name}</div>
-            <div className="MoreInfo__TitleContent--regin">{sector.regin || NO_DATA}</div>
+            <div className="MoreInfo__TitleContent--subtitle">{sector.regin || NO_DATA}</div>
           </div>
         </div>
         <hr />
         <div className="MoreInfo__Content">
-          <LabeledList>
-            <LabeledList.Item label="Текущий глава">{sector.head || NO_DATA}</LabeledList.Item>
-            <LabeledList.Item label="Население">{sector.population || NO_DATA}</LabeledList.Item>
-            <LabeledList.Item label="ВВП">{sector.gdp || NO_DATA}</LabeledList.Item>
-          </LabeledList>
+          <TitledInfo title="Текущий глава">{sector.head || NO_DATA} </TitledInfo>
+          <TitledInfo title="Население">{sector.population || NO_DATA} </TitledInfo>
+          <TitledInfo title="ВВП">{sector.gdp || NO_DATA} </TitledInfo>
         </div>
         <hr />
         <div className="MoreInfo__Relationships">
@@ -131,3 +118,89 @@ export function MoreInfoSector(props) {
 }
 
 MoreInfo.Sector = MoreInfoSector;
+
+export function MoreInfoStar(props) {
+  const { children, star } = props;
+  const [tab, setTab] = useState("description");
+
+  const planets = useMemo(() => Object.values(star.planets) as Planet[], [star]);
+  const [selectedPlanet, setSelectedPlanet] = useState<Planet | null>(null);
+
+  const starInfo = (
+    <>
+      <div className="MoreInfo__Title star">
+        <div className="MoreInfo__TitleContent star">
+          <div className="MoreInfo__TitleContent--name">{star.name}</div>
+        </div>
+      </div>
+      {star.planets.length > 0 && (
+        <Tabs mt={0}>
+          <Tabs.Tab
+            selected={tab === "description"}
+            onClick={() => {
+              setSelectedPlanet(null);
+              setTab("description");
+            }}
+          >
+            Описание
+          </Tabs.Tab>
+          <Tabs.Tab
+            selected={tab === "planets"}
+            onClick={() => {
+              setSelectedPlanet(planets[0]);
+              setTab("planets");
+            }}
+          >
+            Планеты
+          </Tabs.Tab>
+        </Tabs>
+      )}
+      <hr />
+      {tab === "description" && <div className="MoreInfo__Content star">{star.description}</div>}
+      {tab === "planets" && selectedPlanet && (
+        <>
+          <div className="MoreInfo__Title">
+            <div className="MoreInfo__TitleContent">
+              <div className="MoreInfo__TitleContent--name">
+                <Stack fill>
+                  <Stack.Item grow>{selectedPlanet.name}</Stack.Item>
+                  <Stack.Item fontSize={1}>
+                    <Stack align="center">{selectedPlanet.sci}</Stack>
+                  </Stack.Item>
+                </Stack>
+              </div>
+              <div className="MoreInfo__TitleContent--subtitle">{selectedPlanet.subtitle}</div>
+            </div>
+          </div>
+          <div className="MoreInfo__Content scrollable">{selectedPlanet.description}</div>
+          <hr />
+          <Tabs>
+            {planets.map((planet: Planet) => (
+              <Tabs.Tab
+                key={planet.name}
+                selected={selectedPlanet.name === planet.name}
+                onClick={() => setSelectedPlanet(planet)}
+              >
+                {planet.name}
+              </Tabs.Tab>
+            ))}
+          </Tabs>
+        </>
+      )}
+    </>
+  );
+
+  return <MoreInfo content={starInfo}>{children}</MoreInfo>;
+}
+
+MoreInfo.Star = MoreInfoStar;
+
+function TitledInfo(props) {
+  const { children, title } = props;
+  return (
+    <div className="MoreInfo__TitledInfo">
+      <div className="MoreInfo__TitledInfo--title">{title}</div>
+      <div className="MoreInfo__TitledInfo--content">{children}</div>
+    </div>
+  );
+}
