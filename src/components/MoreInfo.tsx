@@ -137,6 +137,17 @@ export function MoreInfoStar(props) {
     contentRef.current?.scrollTo?.({ top: 0 });
   }, [tab, selectedPlanet]);
 
+  const planetImage =
+    selectedPlanet && selectedPlanet.image ? (
+      <LazyLoadImage
+        key={selectedPlanet.image}
+        effect="blur"
+        src={`${import.meta.env.BASE_URL}/planets/${selectedPlanet.image}`}
+      />
+    ) : (
+      <span />
+    );
+
   const sciTooltip = useMemo(
     () => (
       <div className="MoreInfo__SCITooltip">
@@ -203,11 +214,7 @@ export function MoreInfoStar(props) {
       {tab === "planets" && selectedPlanet && (
         <>
           <div ref={contentRef} className="MoreInfo__PlanetTitle">
-            {selectedPlanet.image ? (
-              <LazyLoadImage effect="blur" src={`${import.meta.env.BASE_URL}/planets/${selectedPlanet.image}`} />
-            ) : (
-              <span />
-            )}
+            {planetImage}
             <div className="MoreInfo__Title">
               <div className="MoreInfo__TitleContent">
                 <div className="MoreInfo__TitleContent--name">{selectedPlanet.name}</div>
