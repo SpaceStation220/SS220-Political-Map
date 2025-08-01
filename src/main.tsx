@@ -5,8 +5,9 @@ import { createRoot } from "react-dom/client";
 
 import App from "./App";
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+let app = <App />;
+if (!import.meta.env.PROD) {
+  app = <StrictMode>{app}</StrictMode>;
+}
+
+createRoot(document.getElementById("root")!).render(app);
