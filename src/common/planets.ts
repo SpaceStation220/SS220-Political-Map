@@ -1,5 +1,3 @@
-import { Planet } from "./types";
-
 export const SCI = {
   I: {
     desc: "Терра-аналоги – пригодные для колонизации планеты.",
@@ -51,8 +49,8 @@ export const SCI = {
  * * sci - Классификация планеты, используется строка. Строго типизированно, не ошибётесь при заполнении (если установлены зависимости)
  * * image - Изображение планеты. Поместить изображение в public/planets, после чего вписать название файла в это поле. Рекомендуемый размер изображения - не более 2мб. Желательно что-бы изоюражение было в альбомной ориентации
  */
-export const Planets: Record<string, Planet> = {
-//TSF
+export const Planets = {
+  //TSF
   Venus: {
     name: "Венера",
     subtitle: "Обитаемая планета земной группы",
@@ -131,8 +129,7 @@ export const Planets: Record<string, Planet> = {
     sci: "III-a/e",
     image: "Pluto.jpg",
   },
-
-//KUSP
+  // MARK: KUSP
   Lasarys: {
     name: "Лазарь",
     subtitle: "Обитаемая планета",
@@ -142,6 +139,6 @@ export const Planets: Record<string, Planet> = {
     biggestCities: "Гагарин (столица), Лазарьград, Кармин, Кольцов, Совград, Комплекс Городов Восток, Сибирск.",
     sci: "II-b/c",
     terraformed: true,
-    image: "Lasarys.jpg",
+    image: "Lasarys.png",
   },
 } as const;

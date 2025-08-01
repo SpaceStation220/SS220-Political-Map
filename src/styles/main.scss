@@ -109,6 +109,11 @@
     --tab-color: var(--color-primary) !important;
     cursor: default;
   }
+
+  &--error {
+    pointer-events: none;
+    --tab-color: hsl(from var(--color-primary) 0 calc(s - 15) l) !important;
+  }
 }
 
 .color-label {
