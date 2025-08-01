@@ -240,14 +240,14 @@ export function MoreInfoStar(props) {
           </div>
           <hr />
           <Tabs>
-            {planets.map((planet: Planet | string) => {
+            {planets.map((planet: Planet | string, i) => {
               const isObject = typeof planet === "object" && planet !== null && "name" in planet;
               const name = isObject ? planet.name : String(planet);
               const valid = isObject && planet.name;
 
               return (
                 <Tabs.Tab
-                  key={name}
+                  key={`${name}-${i}`}
                   className={!valid ? "Tab--error" : ""}
                   selected={!!valid && selectedPlanet.name === name}
                   onClick={() => valid && setSelectedPlanet(planet as Planet)}
