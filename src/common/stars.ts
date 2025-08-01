@@ -8,7 +8,39 @@ export enum STAR_TYPE {
   Controversial = "Спорная",
 }
 
+/**
+ * Звёзды
+ * При добавлении новой зезды, её позицию можно задать с помощью координат внизу карты
+ * Банально навести курсор куда надо, и запомнить координаты, после чего ввести из звезде.
+ *
+ * Про поля:
+ * * name - Название звезды
+ * * description - Описание звезды
+ * * planets - Планеты звезды. Необязательное поле. Все планеты находятся в файле planets.ts
+ * * affiliation - Фракция которой принадлежит звезда. Все фракции находятся в файле nations.ts
+ * * type - Тип звезды. Все типы находятся выше...
+ * * position - Координаты звезды
+ * * labelShift - Смещение надписи. Используется для её корректировкиЮ дабы избежать наложения текста. Необязательно
+ */
 export const Stars: Star[] = [
+  {
+    name: "Солнце",
+    description:
+      "Звезда Солнечной системы - колыбели человечества. Является политическим, культурным и экономическим центром Транс-Солнечной Федерации, а также одним из наиболее заселенных и развитых миров человеческого космоса.",
+    planets: [
+      Planets.Venus,
+      Planets.Earth,
+      Planets.Moon,
+      Planets.Mars,
+      Planets.Ganimed,
+      Planets.Europe,
+      Planets.Titan,
+      Planets.Pluto,
+    ],
+    affiliation: Nations.TSF,
+    type: STAR_TYPE.Capital,
+    position: { x: 512, y: 512 },
+  },
   {
     name: "HD 7924",
     affiliation: Nations.Imperium,
@@ -255,24 +287,6 @@ export const Stars: Star[] = [
     affiliation: Nations.Imperium,
     type: STAR_TYPE.Controlled,
     position: { x: 588.5, y: 126 },
-  },
-  {
-    name: "Солнце",
-    description:
-      "Звезда Солнечной системы - колыбели человечества. Является политическим, культурным и экономическим центром Транс-Солнечной Федерации, а также одним из наиболее заселенных и развитых миров человеческого космоса.",
-    planets: [
-      Planets.Venus,
-      Planets.Earth,
-      Planets.Moon,
-      Planets.Mars,
-      Planets.Ganimed,
-      Planets.Europe,
-      Planets.Titan,
-      Planets.Pluto,
-    ],
-    affiliation: Nations.TSF,
-    type: STAR_TYPE.Capital,
-    position: { x: 512, y: 512 },
   },
   {
     name: "α Центавра",
