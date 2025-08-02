@@ -21,11 +21,14 @@
 @include meta.load-css("components/Tabs.scss");
 @include meta.load-css("components/ContextMenu.scss");
 @include meta.load-css("components/Input.scss");
+@include meta.load-css("components/Legend.scss");
 
 .Overlay {
   pointer-events: none;
   position: absolute;
   inset: 0;
+  justify-content: space-between;
+  align-items: end;
 }
 
 .Flex {

@@ -6,6 +6,7 @@ import { maxScale, minScale } from "./common/constants";
 import { store } from "./common/store";
 import { Coordinates, Loading, Sidebar, StarsBackground } from "./components";
 import { ContextMenu } from "./components/ContextMenu";
+import { Legend } from "./components/Legend";
 
 const ScalableContent = lazy(() => import("./components/ScalableContent"));
 
@@ -81,6 +82,7 @@ function App() {
           </TransformComponent>
           <Stack className="Overlay">
             <Sidebar />
+            <Legend />
           </Stack>
           <Stack className="Overlay" vertical reverse>
             <Coordinates cursorRef={cursorPosition} />
