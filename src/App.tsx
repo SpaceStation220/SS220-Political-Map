@@ -85,7 +85,7 @@ function App() {
           <Stack className="Overlay" vertical reverse>
             <Coordinates cursorRef={cursorPosition} />
           </Stack>
-          <ContextMenu targetRef={contextTargetRef} cursorRef={cursorPosition} />
+          <ContextMenu targetRef={contextTargetRef} cursorRef={cursorPosition} mapScale={mapScale} />
         </TransformWrapper>
       </Suspense>
       <StarsBackground />

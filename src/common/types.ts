@@ -37,6 +37,14 @@ export type Planet = {
   image?: string;
 };
 
+export type Mark = {
+  icon: string;
+  color: string;
+  rotation: number;
+  scale: number;
+  position: { x: number; y: number };
+};
+
 export type MergedSectorType = Sector & {
   merged: MultiPolygon;
 };

@@ -2,8 +2,9 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 import { useSyncExternalStore } from "react";
 
 import { CIRCLE_TEXT_INDENT } from "../common/constants";
+import { Marks } from "../common/marks";
 import { store } from "../common/store";
-import { RandomText } from "./RandomText";
+import { Mark, RandomText } from ".";
 
 export function NonInteractive() {
   const translucent = useSyncExternalStore(store.subscribe, store.get);
@@ -45,6 +46,7 @@ export function NonInteractive() {
           </text>
         </svg>
       )}
+      {Marks.length > 0 && Marks.map((mark, i) => <Mark key={i} {...mark} />)}
       <img className="RestrictedSpace__Logo" src={`${import.meta.env.BASE_URL}/logo/RestrictedTransparent.svg`} />
       <img className="NorthSign" src={`${import.meta.env.BASE_URL}/assets/NorthSign.svg`} />
       <img className="NorthEastSign" src={`${import.meta.env.BASE_URL}/assets/NorthEastSign.svg`} />

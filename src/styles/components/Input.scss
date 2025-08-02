@@ -1,0 +1,49 @@
+input[type="range"] {
+  cursor: ew-resize;
+  appearance: none;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  border-radius: 9999px;
+
+  &::-webkit-slider-runnable-track {
+    height: 1.25rem;
+    background: transparent;
+    border-radius: 99999px;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 0;
+    width: 0;
+    box-shadow: -400px 0 0 400px var(--color-primary);
+  }
+
+  &::-moz-range-track {
+    height: 1.25rem;
+    background: transparent;
+    border-radius: 99999px;
+  }
+
+  &::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 0;
+    width: 0;
+    box-shadow: -400px 0 0 400px var(--color-primary);
+  }
+
+  ~ span {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    text-align: right;
+    font-weight: bold;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+}

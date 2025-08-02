@@ -20,6 +20,7 @@
 @include meta.load-css("components/RandomText.scss");
 @include meta.load-css("components/Tabs.scss");
 @include meta.load-css("components/ContextMenu.scss");
+@include meta.load-css("components/Input.scss");
 
 .Overlay {
   pointer-events: none;
