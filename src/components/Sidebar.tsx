@@ -59,7 +59,7 @@ function SidebarContent() {
           ))}
         </div>
       </div>
-      <div className="Sidebar__Footer">
+      <div className="Input--wrapper" tabIndex={0}>
         <Input value={query} placeholder="Найти звезду..." onChange={setQuery} />
       </div>
     </>
