@@ -85,7 +85,6 @@ export const Nations = {
     color: "#af4393",
     logo: "",
   },
-
   // Их вроде в вольники определили
   Kidan: {
     name: "Киданский Улей",
@@ -119,6 +118,6 @@ export const Nations = {
     gdp: "",
     relationships: "Империя Скреллов - под оккупацией\nКССП - поддержка повстанцев\nРеспублика Эллизиум - враждебные",
     color: "#af4393",
-    logo: "",
+    logo: "Gray",
   },
 };

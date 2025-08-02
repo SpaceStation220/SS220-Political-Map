@@ -20,6 +20,7 @@ export type Star = {
   image?: string;
   planets?: Planet[];
   affiliation: Sector;
+  occupiedBy?: Sector;
   type: STAR_TYPE;
   position: { x: number; y: number };
   labelShift?: { x: number; y: number };
