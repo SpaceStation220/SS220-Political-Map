@@ -1,0 +1,57 @@
+.ContextMenu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  padding: 0.33rem;
+
+  &__Overlay {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-base);
+    z-index: 9999; // Above all other elements
+  }
+
+  &__Item {
+    flex: unset;
+    height: 1.667em;
+  }
+}
+
+.transition {
+  &-enter {
+    opacity: 0;
+
+    .ContextMenu {
+      transform: translateY(25%);
+    }
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+
+    .ContextMenu {
+      transform: none;
+      transition: transform 200ms;
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+
+    .ContextMenu {
+      transform: none;
+    }
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+
+    .ContextMenu {
+      transform: translateY(25%);
+      transition: transform 200ms;
+    }
+  }
+}

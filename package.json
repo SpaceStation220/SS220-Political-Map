@@ -21,6 +21,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-lazy-load-image-component": "^1.6.3",
+    "react-transition-group": "^4.4.5",
     "react-zoom-pan-pinch": "^3.7.0",
     "sass": "^1.89.2",
     "tgui-core": "^4.3.4"

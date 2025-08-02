@@ -5,6 +5,7 @@ import { Stack } from "tgui-core/components";
 import { maxScale, minScale } from "./common/constants";
 import { store } from "./common/store";
 import { Coordinates, Loading, Sidebar, StarsBackground } from "./components";
+import { ContextMenu } from "./components/ContextMenu";
 
 const ScalableContent = lazy(() => import("./components/ScalableContent"));
 
@@ -13,6 +14,7 @@ function App() {
   const mapScale = useRef<number>(0.75);
   const dragStarted = useRef(false);
   const dragStartPosition = useRef<{ x: number; y: number } | null>(null);
+  const contextTargetRef = useRef<HTMLDivElement>(null);
 
   function handleMouseMove(event) {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -59,6 +61,7 @@ function App() {
           minScale={minScale}
           initialScale={minScale}
           maxScale={maxScale}
+          panning={{ allowRightClickPan: false }}
           wheel={{ step: minScale / 6 }}
           doubleClick={{ disabled: true }}
           onPanningStart={handleDragStart}
@@ -72,7 +75,7 @@ function App() {
             wrapperStyle={{ width: "100vw", height: "100vh" }}
             contentStyle={{ alignItems: "center", padding: "300px" }}
           >
-            <div style={{ position: "relative" }} onMouseMove={handleMouseMove}>
+            <div ref={contextTargetRef} style={{ position: "relative" }} onMouseMove={handleMouseMove}>
               <ScalableContent />
             </div>
           </TransformComponent>
@@ -82,6 +85,7 @@ function App() {
           <Stack className="Overlay" vertical reverse>
             <Coordinates cursorRef={cursorPosition} />
           </Stack>
+          <ContextMenu targetRef={contextTargetRef} cursorRef={cursorPosition} />
         </TransformWrapper>
       </Suspense>
       <StarsBackground />
