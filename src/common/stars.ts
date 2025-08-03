@@ -440,9 +440,12 @@ export const Stars: Star[] = [
     position: { x: 458, y: 584 },
   },
   {
-    name: "Гумбридж 34",
+    name: "Грумбридж",
+    description:
+      "Двойная звезда одноименной системы, “столица” Нанотрейзен. Одна из систем, отошедшая Компании по результатам Великой Межсистемной Войны. Одно из мест локализации Первой Оборонительной Флотилии “Октавиан”, а так же зона постройки АОН “Парадиз”.",
+    planets: [Planets.Paradise],
     affiliation: Nations.Nanotrasen,
-    type: STAR_TYPE.Controlled,
+    type: STAR_TYPE.Capital,
     position: { x: 507, y: 618 },
     labelShift: { x: -17.5, y: 0 },
   },
