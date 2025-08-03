@@ -18,6 +18,7 @@ export enum STAR_TYPE {
  * * description - Описание звезды
  * * planets - Планеты звезды. Необязательное поле. Все планеты находятся в файле planets.ts
  * * affiliation - Фракция которой принадлежит звезда. Все фракции находятся в файле nations.ts
+ * * occupiedBy - Фракция которая заняла систему. Создаёт штриховку цвета захватчика и красит систему, при этом система остаётся в зоне affiliation пост-фактум
  * * type - Тип звезды. Все типы находятся выше...
  * * position - Координаты звезды
  * * labelShift - Смещение надписи. Используется для её корректировкиЮ дабы избежать наложения текста. Необязательно
@@ -266,19 +267,22 @@ export const Stars: Star[] = [
   },
   {
     name: "Демебола",
-    affiliation: Nations.Imperium,
+    affiliation: Nations.Gray,
+    occupiedBy: Nations.Imperium,
     type: STAR_TYPE.Capital,
     position: { x: 526, y: 203 },
   },
   {
     name: "Грей μ",
-    affiliation: Nations.Imperium,
+    affiliation: Nations.Gray,
+    occupiedBy: Nations.Imperium,
     type: STAR_TYPE.Controlled,
     position: { x: 478, y: 146 },
   },
   {
     name: "Мауна β",
-    affiliation: Nations.Imperium,
+    affiliation: Nations.Gray,
+    occupiedBy: Nations.Imperium,
     type: STAR_TYPE.Controlled,
     position: { x: 563.5, y: 181 },
   },
@@ -669,12 +673,7 @@ export const Stars: Star[] = [
     name: "Оплот",
     description:
       "Звезда одноименной системы, ранее известная как Беллатрикс – третья по яркости звезда в созвездии Ориона. По итогам Советской войны за Независимость, объявлена столичной системой СССП (ныне - Коммунистический Союз Социалистических Планет) и главным символом борьбы Галактического пролетариата за светлое будущее.",
-    planets: [
-      Planets.Lasarys,
-      Planets.Pioneer,
-      Planets.Pioneer1,
-      Planets.Udarnyik,
-    ],
+    planets: [Planets.Lasarys, Planets.Pioneer, Planets.Pioneer1, Planets.Udarnyik],
     affiliation: Nations.CUSP,
     type: STAR_TYPE.Capital,
     position: { x: 410, y: 734 },

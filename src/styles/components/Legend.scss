@@ -1,0 +1,86 @@
+.Legend {
+  position: relative;
+  pointer-events: all;
+  width: 300px;
+  transition: transform var(--transition-duration);
+
+  &--hidden {
+    transform: translateX(100%);
+  }
+
+  &__Title {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-flex;
+    padding: 3px 12px;
+    font-weight: 600;
+    background-color: var(--color-primary);
+    clip-path: var(--clip-top-left);
+    transform: translateY(-100%);
+  }
+
+  &__Content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    border-top: 2px solid var(--color-primary);
+    border-left: 2px solid var(--color-primary);
+    background-color: var(--color-base);
+    backdrop-filter: var(--blur);
+    clip-path: var(--clip-top-left);
+
+    &Row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      &--icon {
+        display: inline-flex;
+
+        svg {
+          width: 2.5em;
+          height: 2em;
+        }
+
+        g {
+          fill: var(--color-primary);
+          transform: scale(5) translate(10%, 10%);
+        }
+
+        line {
+          stroke: yellow;
+          stroke-width: 3px;
+          stroke-dasharray: 5.75 5.75;
+        }
+
+        svg > path {
+          stroke: var(--color-primary);
+
+          &.area {
+            fill: hsl(from var(--color-primary) h s l / 0.25);
+          }
+        }
+      }
+
+      &--content {
+        font-weight: 600;
+        font-size: 1.15em;
+        line-height: 1em;
+      }
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: -2px;
+      width: 13px;
+      height: 2px;
+      background-color: var(--color-primary);
+      transform: rotate(-45deg);
+    }
+  }
+}

@@ -34,7 +34,7 @@ export function findBestLogoPositionAndSize(ring: number[][], cx: number, cy: nu
   const width = maxX - minX;
   const height = maxY - minY;
   const step = Math.min(width, height) / 25;
-  let maxSize = 100;
+  let maxSize = 85;
   let bestX = cx;
   let bestY = cy;
 

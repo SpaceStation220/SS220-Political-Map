@@ -1,0 +1,127 @@
+input[type="range"] {
+  cursor: ew-resize;
+  appearance: none;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+  border-radius: 9999px;
+
+  &::-webkit-slider-runnable-track {
+    height: 1.25rem;
+    background: transparent;
+    border-radius: 99999px;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 0;
+    width: 0;
+    box-shadow: -400px 0 0 400px var(--color-primary);
+  }
+
+  &::-moz-range-track {
+    height: 1.25rem;
+    background: transparent;
+    border-radius: 99999px;
+  }
+
+  &::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 0;
+    width: 0;
+    box-shadow: -400px 0 0 400px var(--color-primary);
+  }
+
+  ~ span {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    text-align: right;
+    font-weight: bold;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
+}
+
+.Input {
+  flex: 1;
+  padding: 10px 15px 8px;
+  background-color: hsla(0, 0%, 100%, 0.1);
+  color: var(--color-text);
+  border: 2px solid var(--color-primary);
+  border-bottom: none;
+  clip-path: polygon(
+    var(--clip-size) 0,
+    calc(100% - var(--clip-size)) 0,
+    100% var(--clip-size),
+    100% 100%,
+    0 100%,
+    0 var(--clip-size)
+  );
+  transition-property: background-color, border, --clip-size;
+  transition-duration: var(--transition-duration);
+
+  &::placeholder {
+    color: hsl(from var(--color-text) h s l / 0.33);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: hsla(0, 0%, 100%, 0.125);
+  }
+
+  &:focus {
+    --clip-size: 0px;
+    border-width: 2px 0px;
+  }
+
+  &--wrapper {
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    margin: 0.5em 0.75em 0;
+    transition-property: margin;
+    transition-duration: var(--transition-duration);
+
+    // Soyded Edition
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      top: 4px;
+      width: 14px;
+      height: 2px;
+      background-color: var(--color-primary);
+      transition-property: left, right;
+      transition-duration: 0.2s;
+      z-index: 1;
+    }
+
+    &:before {
+      left: -2px;
+      transform: rotate(-45deg);
+    }
+
+    &:after {
+      right: -2px;
+      transform: rotate(45deg);
+    }
+
+    &:focus-within {
+      margin: 0.5em 0 0;
+
+      &:before {
+        left: -12px;
+      }
+
+      &:after {
+        right: -12px;
+      }
+    }
+  }
+}

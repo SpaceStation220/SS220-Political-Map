@@ -1,0 +1,82 @@
+.ContextMenu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  padding: 0.33rem;
+  gap: 0.5rem;
+
+  &__Overlay {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-base);
+    z-index: 9999; // Above all other elements
+  }
+
+  &__Item {
+    line-height: 1.5em;
+  }
+
+  .dragging & {
+    opacity: 0.33;
+  }
+}
+
+.transition {
+  &-enter {
+    opacity: 0;
+
+    .ContextMenu {
+      transform: translateY(25%);
+    }
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+
+    .ContextMenu {
+      transform: none;
+      transition: transform 200ms;
+    }
+  }
+
+  &-exit {
+    opacity: 1;
+
+    .ContextMenu {
+      transform: none;
+    }
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+
+    .ContextMenu {
+      transform: translateY(25%);
+      transition: transform 200ms;
+    }
+  }
+}
+
+.CreateMark {
+  &__SectionTitle {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
+  &__Choose {
+    cursor: pointer;
+    aspect-ratio: 1;
+    width: 20px;
+    border-radius: 50%;
+    margin: 0 4px;
+
+    &--selected {
+      cursor: default;
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+  }
+}

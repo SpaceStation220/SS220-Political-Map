@@ -20,6 +20,7 @@ export type Star = {
   image?: string;
   planets?: Planet[];
   affiliation: Sector;
+  occupiedBy?: Sector;
   type: STAR_TYPE;
   position: { x: number; y: number };
   labelShift?: { x: number; y: number };
@@ -34,6 +35,14 @@ export type Planet = {
   sci: SCIKey;
   terraformed?: true;
   image?: string;
+};
+
+export type Mark = {
+  icon: string;
+  color: string;
+  rotation: number;
+  scale: number;
+  position: { x: number; y: number };
 };
 
 export type MergedSectorType = Sector & {

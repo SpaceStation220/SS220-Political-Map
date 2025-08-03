@@ -13,12 +13,14 @@ export function StarMap() {
   const starElements = useMemo(() => {
     return Stars.map((star) => {
       const color = star.affiliation.color;
+      const occupiedColor = star.occupiedBy?.color;
       const path = typeToPath[star.type] || typeToPath[STAR_TYPE.Controlled];
       const transform = `translate(${star.position.x}, ${star.position.y}) scale(2)`;
 
       return {
         key: star.name,
         color,
+        occupiedColor,
         path,
         transform,
         capital: star.type === STAR_TYPE.Capital,
@@ -47,7 +49,7 @@ export function StarMap() {
         key={star.key}
         id={stringToId(star.name)}
         className="Star"
-        style={{ "--star-color": star.color } as CSSProperties}
+        style={{ "--star-color": star.occupiedColor || star.color } as CSSProperties}
       >
         <path d={star.path} transform={star.transform} />
         <g className={classes(["Star__Label", (textVisible || star.capital) && "Star__Label--visible"])}>
