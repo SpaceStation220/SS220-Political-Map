@@ -629,6 +629,9 @@ export const Stars: Star[] = [
 
   {
     name: "Арктур",
+    description:
+      "Звезда одноименной системы, ярчайшая в системе Волопаса. Конечная точка маршрута ковчега “Новая Надежда”, на борту которого находились первые колонисты будущей Республики Эллизиум.",
+    planets: [Planets.Tellurus],
     affiliation: Nations.Elysium,
     type: STAR_TYPE.Capital,
     position: { x: 202, y: 501 },
