@@ -249,7 +249,8 @@ export const Stars: Star[] = [
   },
   {
     name: "11 Малого льва",
-    affiliation: Nations.Imperium,
+    affiliation: Nations.Drask,
+    occupiedBy: Nations.Imperium,
     type: STAR_TYPE.Capital,
     position: { x: 752, y: 751 },
   },
@@ -487,13 +488,15 @@ export const Stars: Star[] = [
   },
   {
     name: "Глизе 488",
-    affiliation: Nations.Free,
+    affiliation: Nations.Drask,
+    occupiedBy: Nations.Free,
     type: STAR_TYPE.Controlled,
     position: { x: 683, y: 768 },
   },
   {
     name: "Гумбридж 1831",
-    affiliation: Nations.Free,
+    affiliation: Nations.Drask,
+    occupiedBy: Nations.Free,
     type: STAR_TYPE.Controlled,
     position: { x: 658, y: 709 },
   },
