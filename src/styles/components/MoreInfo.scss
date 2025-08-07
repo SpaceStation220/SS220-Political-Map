@@ -166,13 +166,16 @@
 
   &__Content {
     user-select: text;
-    overflow: auto;
-    scrollbar-width: thin;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
     padding: 0.33rem 0.5rem;
     white-space: break-spaces;
+
+    &.star {
+      overflow: auto;
+      scrollbar-width: thin;
+    }
   }
 
   // MARK: TODO: Переделать
