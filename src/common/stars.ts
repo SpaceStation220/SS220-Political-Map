@@ -398,7 +398,13 @@ export const Stars: Star[] = [
     position: { x: 618, y: 543 },
   },
   {
-    name: "κ Кита",
+    name: "Каппа Кита",
+    description:
+      "Звезда одноимённой системы — жёлтый карлик, по характеристикам схожий с Солнцем. Является пограничной системой и основным источником собственной плазмы для Федерации. Также считается родной звездой расы плазмаменов.",
+    planets: [
+      Planets.Boron,
+      Planets.Boron2,
+    ],
     affiliation: Nations.TSF,
     type: STAR_TYPE.Capital,
     position: { x: 748, y: 566 },
