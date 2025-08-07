@@ -556,7 +556,14 @@ export const Stars: Star[] = [
     position: { x: 410, y: 410 },
   },
   {
-    name: "HD 4391",
+    name: "Замсиин-Ир",
+    description:
+      "Родная система Таяран, образована парной звездой С’рандарр-Месса. Значимый транзитный узел Вольных Систем, патрулируется небольшим оборонительным флотом дома Кайтам, усиленного несколькими боевыми баржами Империи Кхси'Ра.",
+    planets: [
+      Planets.Khiram,
+      Planets.Adomai,
+      Planets.Iluk,
+      Planets.Ramaja],
     affiliation: Nations.Free,
     type: STAR_TYPE.Capital,
     position: { x: 352, y: 459 },
