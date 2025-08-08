@@ -575,7 +575,11 @@ export const Stars: Star[] = [
     position: { x: 352, y: 459 },
   },
   {
-    name: "20 LMi",
+    name: "Лоум",
+    description:
+      "Двойная звезда, родной мир слаймоменов. В системе активен трафик судов Вольных Территорий и НанотрейзенДвойная звезда — родная система слаймоменов. Отличается высоким судоходным трафиком Вольных Территорий и Нанотрейзен.",
+    planets: [
+      Planets.Ksarksis],
     affiliation: Nations.Free,
     type: STAR_TYPE.Capital,
     position: { x: 336, y: 567 },
