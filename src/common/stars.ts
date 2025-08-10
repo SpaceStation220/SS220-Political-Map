@@ -218,7 +218,11 @@ export const Stars: Star[] = [
     position: { x: 610, y: 419 },
   },
   {
-    name: "85 Пегаса",
+    name: "Йеллар",
+    description:
+      "Родная система ниан, ключевая точка маршрутов их крупнейшего торгового флота — Каравана. В настоящее время полностью интегрирована в состав Империи Скреллов и относится к числу имперских систем.",
+    planets: [
+      Planets.Zuviyen],
     affiliation: Nations.Imperium,
     type: STAR_TYPE.Capital,
     position: { x: 845, y: 536 },
