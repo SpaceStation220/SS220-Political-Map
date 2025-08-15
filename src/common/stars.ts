@@ -257,7 +257,8 @@ export const Stars: Star[] = [
       "Родная система драсков, образованная двойной звездой. До 2545 года являлась политическим центром Гегемонии Маарун, однако была захвачена в результате Пятой Волны – масштабной экспансии Империи Скреллов в приграничные системы.",
     planets: [
       Planets.Urlum,
-      Planets.MounLum,
+      Planets.MouunLum,
+      Planets.RouunLum,
       Planets.Vooloo],
     affiliation: Nations.Drask,
     occupiedBy: Nations.Imperium,
