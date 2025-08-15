@@ -252,7 +252,13 @@ export const Stars: Star[] = [
     position: { x: 794, y: 679 },
   },
   {
-    name: "11 Малого льва",
+    name: "Оумм",
+    description:
+      "Родная система драсков, образованная двойной звездой. До 2545 года являлась политическим центром Гегемонии Маарун, однако была захвачена в результате Пятой Волны – масштабной экспансии Империи Скреллов в приграничные системы.",
+    planets: [
+      Planets.Urlum,
+      Planets.MounLum,
+      Planets.Vooloo],
     affiliation: Nations.Drask,
     occupiedBy: Nations.Imperium,
     type: STAR_TYPE.Capital,
@@ -664,7 +670,7 @@ export const Stars: Star[] = [
   {
     name: "Глизе 3825",
     affiliation: Nations.Free,
-    type: STAR_TYPE.Capital,
+    type: STAR_TYPE.Controversial,
     position: { x: 542, y: 842 },
   },
   {
@@ -686,7 +692,7 @@ export const Stars: Star[] = [
   {
     name: "α Ворона",
     affiliation: Nations.Elysium,
-    type: STAR_TYPE.Capital,
+    type: STAR_TYPE.Controlled,
     position: { x: 153, y: 612 },
   },
   {
