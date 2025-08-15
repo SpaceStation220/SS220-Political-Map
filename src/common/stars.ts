@@ -258,8 +258,7 @@ export const Stars: Star[] = [
     planets: [
       Planets.Urlum,
       Planets.MouunLum,
-      Planets.RouunLum,
-      Planets.Vooloo],
+      Planets.RouunLum],
     affiliation: Nations.Drask,
     occupiedBy: Nations.Imperium,
     type: STAR_TYPE.Capital,
