@@ -575,7 +575,7 @@ export const Stars: Star[] = [
   {
     name: "γ Зайца",
     affiliation: Nations.Free,
-    type: STAR_TYPE.Capital,
+    type: STAR_TYPE.Controversial,
     position: { x: 270, y: 381 },
   },
   {
@@ -598,20 +598,20 @@ export const Stars: Star[] = [
     position: { x: 352, y: 459 },
   },
   {
-    name: "Лоум",
+    name: "Бикксор",
     description:
       "Двойная звезда, родной мир слаймоменов. В системе активен трафик судов Вольных Территорий и Нанотрейзен.",
     planets: [
       Planets.Ksarksis],
     affiliation: Nations.Free,
     type: STAR_TYPE.Capital,
-    position: { x: 336, y: 567 },
+    position: { x: 294, y: 587 },
   },
   {
     name: "Глизе 433",
     affiliation: Nations.Free,
     type: STAR_TYPE.Controversial,
-    position: { x: 294, y: 587 },
+    position: { x: 336, y: 567 },
   },
   {
     name: "HR 1614",
