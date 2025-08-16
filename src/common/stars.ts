@@ -277,7 +277,11 @@ export const Stars: Star[] = [
     position: { x: 657, y: 206 },
   },
   {
-    name: "Демебола",
+    name: "Мауна",
+    description:
+      "Родная система греев, звезда класса красный карлик. В настоящий момент система, как и все остальные миры серых, находится под оккупацией Империи Скреллов. Из-за постоянных восстаний и диверсий трафик закрыт для любых неимперских судов.",
+    planets: [
+      Planets.MaunaB],
     affiliation: Nations.Gray,
     occupiedBy: Nations.Imperium,
     type: STAR_TYPE.Capital,
