@@ -618,7 +618,7 @@ export const Stars: Star[] = [
     planets: [
       Planets.Limneya],
     affiliation: Nations.Free,
-    type: STAR_TYPE.Controversial,
+    type: STAR_TYPE.Capital,
     position: { x: 336, y: 567 },
   },
   {
