@@ -327,7 +327,11 @@ export const Stars: Star[] = [
     labelShift: { x: 0, y: 2 },
   },
   {
-    name: "Росс 128",
+    name: "Веридиус",
+    description:
+      "Звезда одноименной системы, красный карлик. Приграничная система ТСФ, ничем не примечательная.",
+    planets: [
+      Planets.Raine],
     affiliation: Nations.TSF,
     type: STAR_TYPE.Controlled,
     position: { x: 509, y: 416 },
