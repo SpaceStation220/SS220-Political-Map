@@ -749,9 +749,9 @@ export const Stars: Star[] = [
     description:
       "Звезда одноименной системы, ранее известная как Беллатрикс – третья по яркости звезда в созвездии Ориона. По итогам Советской войны за Независимость, объявлена столичной системой СССП (ныне - Коммунистический Союз Социалистических Планет) и главным символом борьбы Галактического пролетариата за светлое будущее.",
     planets: [
-      Planets.Lasarys,
       Planets.Pioneer,
       Planets.Pioneer1,
+      Planets.Lasarys,
       Planets.Udarnyik],
     affiliation: Nations.CUSP,
     type: STAR_TYPE.Capital,
