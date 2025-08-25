@@ -345,6 +345,10 @@ export const Stars: Star[] = [
   },
   {
     name: "Сириус",
+    description:
+      "Звезда одноименной системы, красный карлик. Приграничная система ТСФ, ничем не примечательная.",
+    planets: [
+      Planets.BabylonIII],
     affiliation: Nations.TSF,
     type: STAR_TYPE.Controlled,
     position: { x: 439, y: 492 },
@@ -421,7 +425,7 @@ export const Stars: Star[] = [
       "Звезда одноимённой системы — жёлтый карлик, по характеристикам схожий с Солнцем. Является пограничной системой и основным источником собственной плазмы для Федерации. Также считается родной звездой расы плазмаменов.",
     planets: [
       Planets.Boron,
-      Planets.Boron2,
+      Planets.BoronII,
     ],
     affiliation: Nations.TSF,
     type: STAR_TYPE.Capital,
@@ -754,7 +758,7 @@ export const Stars: Star[] = [
       "Звезда одноименной системы, ранее известная как Беллатрикс – третья по яркости звезда в созвездии Ориона. По итогам Советской войны за Независимость, объявлена столичной системой СССП (ныне - Коммунистический Союз Социалистических Планет) и главным символом борьбы Галактического пролетариата за светлое будущее.",
     planets: [
       Planets.Pioneer,
-      Planets.Pioneer1,
+      Planets.PioneerII,
       Planets.Lasarys,
       Planets.Udarnyik],
     affiliation: Nations.CUSP,
