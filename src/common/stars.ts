@@ -444,19 +444,19 @@ export const Stars: Star[] = [
   {
     name: "Глизе 667",
     affiliation: Nations.TSF,
-    type: STAR_TYPE.Controversial,
+    type: STAR_TYPE.Controlled,
     position: { x: 671, y: 628 },
   },
   {
     name: "Фомальгаут",
     affiliation: Nations.TSF,
-    type: STAR_TYPE.Controversial,
+    type: STAR_TYPE.Controlled,
     position: { x: 712, y: 611 },
   },
   {
     name: "π Ориона",
     affiliation: Nations.TSF,
-    type: STAR_TYPE.Controversial,
+    type: STAR_TYPE.Controlled,
     position: { x: 730, y: 519 },
   },
   {
