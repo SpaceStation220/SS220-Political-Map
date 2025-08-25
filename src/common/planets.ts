@@ -141,7 +141,7 @@ export const Planets: Record<string, Planet> = {
     sci: "III-a/b/c/e",
     image: "Boron.jpg",
   },
-  Boron2: {
+  BoronII: {
     name: "Бор-II",
     subtitle: "Спутник Бора",
     description:
@@ -283,7 +283,7 @@ export const Planets: Record<string, Planet> = {
     sci: "VII",
     image: "Pioneer.jpg",
   },
-  Pioneer1: {
+  PioneerII: {
     name: "Пионер-II",
     subtitle: "Обитаемая планета, спутник Пионера",
     description:
