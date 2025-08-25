@@ -207,7 +207,7 @@ export const Planets: Record<string, Planet> = {
     sci: "V",
     image: "Athena.jpg",
   },
-  CitraB: {
+  Langobardia: {
     name: "Лангобардия",
     subtitle: "Обитаемая планета",
     description:
