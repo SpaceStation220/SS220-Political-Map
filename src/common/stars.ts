@@ -419,7 +419,11 @@ export const Stars: Star[] = [
     labelShift: { x: 4, y: -4 },
   },
   {
-    name: "ε Индейца",
+    name: "Эпсилон Индейца",
+    description:
+      "Звезда одноименной системы, ничем не примечательный мир.",
+    planets: [
+      Planets.AlKhazraj],
     affiliation: Nations.TSF,
     type: STAR_TYPE.Controlled,
     position: { x: 556, y: 604 },
