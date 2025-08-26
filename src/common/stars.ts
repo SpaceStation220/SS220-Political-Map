@@ -801,7 +801,7 @@ export const Stars: Star[] = [
     position: { x: 324, y: 677 },
   },
   {
-    name: "α Печи",
+    name: "Заря",
     affiliation: Nations.CUSP,
     type: STAR_TYPE.Controlled,
     position: { x: 299, y: 723 },
@@ -837,19 +837,19 @@ export const Stars: Star[] = [
     position: { x: 375, y: 666 },
   },
   {
-    name: "EQ Пегаса",
+    name: "Галилея",
     affiliation: Nations.CUSP,
     type: STAR_TYPE.Controlled,
     position: { x: 435, y: 673 },
   },
   {
-    name: "ξ Волопаса",
+    name: "Залеска",
     affiliation: Nations.CUSP,
     type: STAR_TYPE.Controlled,
     position: { x: 461, y: 693 },
   },
   {
-    name: "LHS 3003",
+    name: "Январь",
     affiliation: Nations.CUSP,
     type: STAR_TYPE.Controlled,
     position: { x: 546, y: 683 },
