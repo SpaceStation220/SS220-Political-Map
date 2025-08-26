@@ -351,7 +351,7 @@ export const Stars: Star[] = [
     position: { x: 509, y: 416 },
   },
   {
-    name: "Вольф 359",
+    name: "Лапласса",
     affiliation: Nations.TSF,
     type: STAR_TYPE.Controlled,
     position: { x: 483, y: 451 },
@@ -385,21 +385,21 @@ export const Stars: Star[] = [
     position: { x: 398, y: 505 },
   },
   {
-    name: "Лакайль 5352",
+    name: "Лакайль",
     affiliation: Nations.TSF,
     type: STAR_TYPE.Controlled,
     position: { x: 530, y: 613 },
     labelShift: { x: 5, y: -17 },
   },
   {
-    name: "Крюгер 60",
+    name: "Крюгер",
     affiliation: Nations.TSF,
     type: STAR_TYPE.Controlled,
     position: { x: 552, y: 630 },
     labelShift: { x: 2.5, y: 2.5 },
   },
   {
-    name: "Лакайль 8760",
+    name: "Фертил",
     affiliation: Nations.TSF,
     type: STAR_TYPE.Controlled,
     position: { x: 590, y: 615 },
@@ -455,7 +455,7 @@ export const Stars: Star[] = [
     position: { x: 748, y: 566 },
   },
   {
-    name: "Глизе 667",
+    name: "Коперник",
     affiliation: Nations.TSF,
     type: STAR_TYPE.Controlled,
     position: { x: 671, y: 628 },
@@ -467,7 +467,7 @@ export const Stars: Star[] = [
     position: { x: 712, y: 611 },
   },
   {
-    name: "π Ориона",
+    name: "Пи Ориона",
     affiliation: Nations.TSF,
     type: STAR_TYPE.Controlled,
     position: { x: 730, y: 519 },
