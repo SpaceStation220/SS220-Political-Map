@@ -413,6 +413,10 @@ export const Stars: Star[] = [
   },
   {
     name: "Ньютон",
+    description:
+      "Двойная звездная система. Часть \”Плодородного пояса\” Ньютон-Фертил-Крюгер - несколько тесно связанных звёздных систем, активно используемых Федерацией для сельскохозяйственного производства.",
+    planets: [
+      Planets.Amigdala],
     affiliation: Nations.TSF,
     type: STAR_TYPE.Controlled,
     position: { x: 573, y: 587 },
