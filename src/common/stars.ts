@@ -541,19 +541,19 @@ export const Stars: Star[] = [
     position: { x: 265, y: 211 },
   },
   {
-    name: "Глизе 282",
+    name: "Бризз",
     affiliation: Nations.Free,
     type: STAR_TYPE.Controlled,
     position: { x: 266.5, y: 277 },
   },
   {
-    name: "μ Жертвенника",
+    name: "Празаигз",
     affiliation: Nations.Free,
     type: STAR_TYPE.Controlled,
     position: { x: 226.5, y: 177 },
   },
   {
-    name: "Чалаван",
+    name: "Ззи",
     affiliation: Nations.Free,
     type: STAR_TYPE.Controlled,
     position: { x: 321.5, y: 209.5 },
