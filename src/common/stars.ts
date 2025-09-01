@@ -228,7 +228,7 @@ export const Stars: Star[] = [
     position: { x: 845, y: 536 },
   },
   {
-    name: "Светочь Лампуса",
+    name: "Светоч Лампуса",
     affiliation: Nations.Imperium,
     type: STAR_TYPE.Controlled,
     position: { x: 905, y: 554 },
