@@ -809,7 +809,11 @@ export const Stars: Star[] = [
     position: { x: 344, y: 621 },
   },
   {
-    name: "Гильгамеш",
+    name: "Урса",
+    description:
+      "Звезда — красный карлик. Система известна как одно из мест славы Январской революции, а впоследствии — одного из самых жестоких и кровавых подавлений восстаний рабочих армией ТСФ. Сегодня она является важным индустриальным столпом КССП: пространство системы заполнено баржами и транспортниками, перевозящими тяжёлую промышленную технику, руду и строительные материалы.",
+    planets: [
+      Planets.Magnitka],
     affiliation: Nations.CUSP,
     type: STAR_TYPE.Controlled,
     position: { x: 324, y: 677 },
@@ -869,7 +873,7 @@ export const Stars: Star[] = [
     position: { x: 546, y: 683 },
   },
   {
-    name: "Урса",
+    name: "Гильгамеш",
     affiliation: Nations.CUSP,
     type: STAR_TYPE.Controlled,
     position: { x: 584, y: 716 },
