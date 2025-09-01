@@ -574,7 +574,7 @@ export const Stars: Star[] = [
   {
     name: "Уутар",
     affiliation: Nations.Drask,
-    occupiedBy: Nations.Free,
+    occupiedBy: Nations.CUSP,
     type: STAR_TYPE.Controlled,
     position: { x: 658, y: 709 },
   },
