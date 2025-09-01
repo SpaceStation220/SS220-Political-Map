@@ -288,14 +288,14 @@ export const Stars: Star[] = [
     position: { x: 526, y: 203 },
   },
   {
-    name: "Грей μ",
+    name: "Мю Грей",
     affiliation: Nations.Gray,
     occupiedBy: Nations.Imperium,
     type: STAR_TYPE.Controlled,
     position: { x: 478, y: 146 },
   },
   {
-    name: "Мауна β",
+    name: "Демебола",
     affiliation: Nations.Gray,
     occupiedBy: Nations.Imperium,
     type: STAR_TYPE.Controlled,
