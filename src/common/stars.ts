@@ -565,21 +565,21 @@ export const Stars: Star[] = [
     position: { x: 201, y: 243 },
   },
   {
-    name: "Глизе 488",
+    name: "Гхаал",
     affiliation: Nations.Drask,
     occupiedBy: Nations.Free,
     type: STAR_TYPE.Controlled,
     position: { x: 683, y: 768 },
   },
   {
-    name: "Гумбридж 1831",
+    name: "Уутар",
     affiliation: Nations.Drask,
     occupiedBy: Nations.Free,
     type: STAR_TYPE.Controlled,
     position: { x: 658, y: 709 },
   },
   {
-    name: "54 Рыб",
+    name: "Гууун",
     affiliation: Nations.Drask,
     occupiedBy: Nations.Free,
     type: STAR_TYPE.Controlled,
@@ -874,6 +874,10 @@ export const Stars: Star[] = [
   },
   {
     name: "Гильгамеш",
+    description:
+      "Звёздная система, состоящая из жёлтого и красного карлика. Является приграничным миром КССП, где базируется пограничный флот и несколько крупных снабженческих комплексов, обслуживающих линию фронтира и систему Уутар. Главный стратегический объект системы — \”Врата Гильгамеша\", стабильный блюспейс-коридор, через который проходит крупная логистическая артерия КССП. Именно он связывает приграничные территории с Оплотом, обеспечивая быстрые переброски флота, ресурсов и рабочей силы. Во время Великой Межсистемной войны в этой системе произошло несколько крупных космических баталий.",
+    planets: [
+      Planets.Despoina],
     affiliation: Nations.CUSP,
     type: STAR_TYPE.Controlled,
     position: { x: 584, y: 716 },
