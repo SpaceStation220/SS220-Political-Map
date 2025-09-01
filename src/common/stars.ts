@@ -838,6 +838,11 @@ export const Stars: Star[] = [
   },
   {
     name: "Вега",
+    description:
+      "Звезда одноименной системы, желтый карлик. Малопримечательный приграничный мир КССП.",
+    planets: [
+      Planets.Viyara,
+      Planets.ViyaraII],
     affiliation: Nations.CUSP,
     type: STAR_TYPE.Controlled,
     position: { x: 487, y: 760 },
