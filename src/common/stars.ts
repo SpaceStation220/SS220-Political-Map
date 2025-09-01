@@ -553,13 +553,13 @@ export const Stars: Star[] = [
     position: { x: 226.5, y: 177 },
   },
   {
-    name: "Ззи",
+    name: "Чалаван",
     affiliation: Nations.Free,
     type: STAR_TYPE.Controlled,
     position: { x: 321.5, y: 209.5 },
   },
   {
-    name: "η Цефея",
+    name: "Ззи",
     affiliation: Nations.Free,
     type: STAR_TYPE.Controlled,
     position: { x: 201, y: 243 },
