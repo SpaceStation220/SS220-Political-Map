@@ -26,9 +26,14 @@ export function Sidebar() {
 }
 
 function SidebarHeader() {
+  let sidebarLogo = "SS220";
+  if (window.self !== window.top) {
+    sidebarLogo = "Nanotrasen";
+  }
+
   return (
     <div className="Sidebar__Header">
-      <img src={`${import.meta.env.BASE_URL}SS220.svg`} />
+      <img src={`${import.meta.env.BASE_URL}${sidebarLogo}.svg`} />
       <span>Политическая карта</span>
     </div>
   );
