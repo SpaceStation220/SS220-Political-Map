@@ -28,7 +28,7 @@ export function Sidebar() {
 function SidebarHeader() {
   let sidebarLogo = "SS220";
   if (window.self !== window.top) {
-    sidebarLogo = "Nanotrasen";
+    sidebarLogo = "logo/Nanotrasen";
   }
 
   return (
