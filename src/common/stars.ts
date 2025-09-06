@@ -590,7 +590,7 @@ export const Stars: Star[] = [
     position: { x: 363, y: 321 },
   },
   {
-    name: 'γ Зайца',
+    name: 'Гамма Зайца',
     affiliation: Nations.Free,
     type: STAR_TYPE.Controversial,
     position: { x: 270, y: 381 },
