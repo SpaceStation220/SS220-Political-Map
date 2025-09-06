@@ -1,17 +1,17 @@
-import { classes } from "tgui-core/react";
+import { classes } from 'tgui-core/react';
 
 type HideButtonProps = {
   checked: boolean;
-  position?: "left" | "right";
+  position?: 'left' | 'right';
   onClick: () => void;
 };
 
 export function HideButton(props: HideButtonProps) {
-  const { checked, position = "right", onClick } = props;
+  const { checked, position = 'right', onClick } = props;
 
   return (
     <button
-      className={classes(["HideButton", `HideButton--${position}`, checked && "HideButton--checked"])}
+      className={classes(['HideButton', `HideButton--${position}`, checked && 'HideButton--checked'])}
       onClick={onClick}
     >
       <div />

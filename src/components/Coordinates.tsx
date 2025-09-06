@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export function Coordinates({ cursorRef }: { cursorRef: React.RefObject<{ x: number; y: number }> }) {
   const [, forceUpdate] = useState(0);

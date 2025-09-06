@@ -1,22 +1,22 @@
-import { useLocalStorage } from "@uidotdev/usehooks";
-import { CSSProperties, useState } from "react";
-import { useControls } from "react-zoom-pan-pinch";
-import { Input, Stack } from "tgui-core/components";
-import { useFuzzySearch } from "tgui-core/fuzzysearch";
-import { classes } from "tgui-core/react";
+import { useLocalStorage } from '@uidotdev/usehooks';
+import { CSSProperties, useState } from 'react';
+import { useControls } from 'react-zoom-pan-pinch';
+import { Input, Stack } from 'tgui-core/components';
+import { useFuzzySearch } from 'tgui-core/fuzzysearch';
+import { classes } from 'tgui-core/react';
 
-import { Stars } from "../common";
-import { stringToId } from "../common/helpers";
-import { Star } from "../common/types";
-import { Button } from "./Button";
-import { HideButton } from "./HideButton";
-import { Preferences } from "./Preferences";
+import { Stars } from '../common';
+import { stringToId } from '../common/helpers';
+import { Star } from '../common/types';
+import { Button } from './Button';
+import { HideButton } from './HideButton';
+import { Preferences } from './Preferences';
 
 export function Sidebar() {
-  const [sidebarHidden, setSidebarHidden] = useLocalStorage("sidebar-hidden", false);
+  const [sidebarHidden, setSidebarHidden] = useLocalStorage('sidebar-hidden', false);
 
   return (
-    <aside className={classes(["Sidebar", sidebarHidden && "Sidebar--hidden"])}>
+    <aside className={classes(['Sidebar', sidebarHidden && 'Sidebar--hidden'])}>
       <HideButton checked={sidebarHidden} onClick={() => setSidebarHidden(!sidebarHidden)} />
       <SidebarHeader />
       <SidebarContent />
@@ -26,9 +26,9 @@ export function Sidebar() {
 }
 
 function SidebarHeader() {
-  let sidebarLogo = "SS220";
+  let sidebarLogo = 'SS220';
   if (window.self !== window.top) {
-    sidebarLogo = "logo/Nanotrasen";
+    sidebarLogo = 'logo/Nanotrasen';
   }
 
   return (
@@ -42,7 +42,7 @@ function SidebarHeader() {
 function SidebarContent() {
   const { query, setQuery, results } = useFuzzySearch({
     searchArray: Stars.map((s) => s.name),
-    matchStrategy: "smart",
+    matchStrategy: 'smart',
     getSearchString: (name) => name,
   });
 
@@ -82,10 +82,10 @@ function SidebarSector({ name, stars, open }: SidebarSectorProps) {
   const { zoomToElement } = useControls();
 
   return (
-    <nav className={classes(["Sector", (opened || open) && "Sector--opened"])}>
+    <nav className={classes(['Sector', (opened || open) && 'Sector--opened'])}>
       <div className="Sector__Title" onClick={() => setOpened(!opened)}>
         <Stack fill>
-          <Stack.Item className={classes(["Sector__TitleIcon", (opened || open) && "Sector__TitleIcon--opened"])}>
+          <Stack.Item className={classes(['Sector__TitleIcon', (opened || open) && 'Sector__TitleIcon--opened'])}>
             <div />
             <div />
             <div />
@@ -97,7 +97,7 @@ function SidebarSector({ name, stars, open }: SidebarSectorProps) {
         {stars.map((star, i) => (
           <Button
             key={star.name}
-            style={{ "--index": i } as CSSProperties}
+            style={{ '--index': i } as CSSProperties}
             onClick={() => zoomToElement(stringToId(star.name))}
           >
             {star.name}

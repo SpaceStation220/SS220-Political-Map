@@ -1,7 +1,7 @@
-import { MultiPolygon } from "polygon-clipping";
+import { MultiPolygon } from 'polygon-clipping';
 
-import { SCI } from "./planets";
-import { STAR_TYPE } from "./stars";
+import { SCI } from './planets';
+import { STAR_TYPE } from './stars';
 
 export type Sector = {
   name: string;
@@ -53,7 +53,7 @@ type SCIType = typeof SCI;
 type MainKey = keyof SCIType;
 
 type SubtypeMap = {
-  [K in MainKey]: SCIType[K] extends { subtypes: Record<string, string> } ? keyof SCIType[K]["subtypes"] : never;
+  [K in MainKey]: SCIType[K] extends { subtypes: Record<string, string> } ? keyof SCIType[K]['subtypes'] : never;
 };
 
 type JoinSubtypes<T extends string> = T | `${T}/${T}` | `${T}/${T}/${T}` | `${T}/${T}/${T}/${T}`;

@@ -1,14 +1,14 @@
-import { useLocalStorage } from "@uidotdev/usehooks";
-import { useSyncExternalStore } from "react";
+import { useLocalStorage } from '@uidotdev/usehooks';
+import { useSyncExternalStore } from 'react';
 
-import { CIRCLE_TEXT_INDENT } from "../common/constants";
-import { Marks } from "../common/marks";
-import { store } from "../common/store";
-import { Mark, RandomText } from ".";
+import { CIRCLE_TEXT_INDENT } from '../common/constants';
+import { Marks } from '../common/marks';
+import { store } from '../common/store';
+import { Mark, RandomText } from '.';
 
 export function NonInteractive() {
   const translucent = useSyncExternalStore(store.subscribe, store.get);
-  const [circlesDisabled] = useLocalStorage("circles-disabled", false);
+  const [circlesDisabled] = useLocalStorage('circles-disabled', false);
 
   function calcTextIndent(radius: number) {
     return 512 - radius - CIRCLE_TEXT_INDENT;
@@ -31,7 +31,7 @@ export function NonInteractive() {
         </svg>
       ))}
       {!circlesDisabled && (
-        <svg className={translucent ? "translucent" : ""} width="100%" height="100%" viewBox={`0 0 1024 1024`}>
+        <svg className={translucent ? 'translucent' : ''} width="100%" height="100%" viewBox={`0 0 1024 1024`}>
           <circle cx="512" cy="512" r="85.73" />
           <text x="512" y={calcTextIndent(85.73)} textAnchor="middle">
             Центр

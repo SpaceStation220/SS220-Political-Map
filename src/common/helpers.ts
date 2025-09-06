@@ -1,14 +1,14 @@
-import { STAR_TYPE } from "./stars";
+import { STAR_TYPE } from './stars';
 
 export const typeToPath: { [key in STAR_TYPE]: string } = {
   [STAR_TYPE.Capital]:
-    "M3 0 L2.22 0.78 L2.22 2.1225 L0.8775 2.1225 L0 3 L-0.8775 2.1225 L-2.02125 2.1225 L-2.02125 0.97875 L-3 0 L-2.02125 -0.97875 L-2.02125 -2.1225 L-0.8775 -2.1225 L0 -3 L0.8775 -2.1225 L2.22 -2.1225 L2.22 -0.78 L3 0 Z",
-  [STAR_TYPE.Controlled]: "M0 -1.5 L1.5 0 L0 1.5 L-1.5 0 Z",
-  [STAR_TYPE.Controversial]: "M0 -1.5 L-1.5 0 L0 1.5 L1.5 0 Z M-1 0 L0 -1 L1 0 L0 1 Z",
+    'M3 0 L2.22 0.78 L2.22 2.1225 L0.8775 2.1225 L0 3 L-0.8775 2.1225 L-2.02125 2.1225 L-2.02125 0.97875 L-3 0 L-2.02125 -0.97875 L-2.02125 -2.1225 L-0.8775 -2.1225 L0 -3 L0.8775 -2.1225 L2.22 -2.1225 L2.22 -0.78 L3 0 Z',
+  [STAR_TYPE.Controlled]: 'M0 -1.5 L1.5 0 L0 1.5 L-1.5 0 Z',
+  [STAR_TYPE.Controversial]: 'M0 -1.5 L-1.5 0 L0 1.5 L1.5 0 Z M-1 0 L0 -1 L1 0 L0 1 Z',
 };
 
 export function stringToId(str: string) {
-  return str.replace(/[^а-яА-Яa-zA-Z0-9\u0370-\u03FF-]/g, "").toLowerCase();
+  return str.replace(/[^а-яА-Яa-zA-Z0-9\u0370-\u03FF-]/g, '').toLowerCase();
 }
 
 function getBounds(ring: number[][]): [number, number, number, number] {

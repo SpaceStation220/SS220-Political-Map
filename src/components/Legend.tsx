@@ -1,17 +1,17 @@
-import { useLocalStorage } from "@uidotdev/usehooks";
-import { Stack } from "tgui-core/components";
-import { classes } from "tgui-core/react";
+import { useLocalStorage } from '@uidotdev/usehooks';
+import { Stack } from 'tgui-core/components';
+import { classes } from 'tgui-core/react';
 
-import { STAR_TYPE, typeToPath } from "../common";
-import { HideButton } from "./HideButton";
+import { STAR_TYPE, typeToPath } from '../common';
+import { HideButton } from './HideButton';
 
 export function Legend() {
-  const [legendHidden, setLegendHidden] = useLocalStorage("legend-hidden", false);
+  const [legendHidden, setLegendHidden] = useLocalStorage('legend-hidden', false);
 
-  const sectorArea = "M33,32H0V7L7,0h33v25l-7,7Z";
+  const sectorArea = 'M33,32H0V7L7,0h33v25l-7,7Z';
 
   return (
-    <aside className={classes(["Legend", legendHidden && "Legend--hidden"])}>
+    <aside className={classes(['Legend', legendHidden && 'Legend--hidden'])}>
       <HideButton checked={legendHidden} position="left" onClick={() => setLegendHidden(!legendHidden)} />
       <div className="Legend__Title">Легенда</div>
       <div className="Legend__Content">

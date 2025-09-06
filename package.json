@@ -11,7 +11,8 @@
     "fix-lint": "eslint . --fix",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist",
-    "build-and-deploy": "tsc -b && vite build && gh-pages -d dist"
+    "build-and-deploy": "tsc -b && vite build && gh-pages -d dist",
+    "prettier": "prettier --write ."
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.13",

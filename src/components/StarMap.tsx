@@ -1,11 +1,11 @@
-import { CSSProperties, useMemo, useSyncExternalStore } from "react";
-import { Icon } from "tgui-core/components";
-import { classes } from "tgui-core/react";
+import { CSSProperties, useMemo, useSyncExternalStore } from 'react';
+import { Icon } from 'tgui-core/components';
+import { classes } from 'tgui-core/react';
 
-import { STAR_TYPE, Stars } from "../common";
-import { stringToId, typeToPath } from "../common/helpers";
-import { store } from "../common/store";
-import { MoreInfo } from "./MoreInfo";
+import { STAR_TYPE, Stars } from '../common';
+import { stringToId, typeToPath } from '../common/helpers';
+import { store } from '../common/store';
+import { MoreInfo } from './MoreInfo';
 
 export function StarMap() {
   const textVisible = useSyncExternalStore(store.subscribe, store.get);
@@ -35,7 +35,7 @@ export function StarMap() {
 
   return starElements.map((star) => {
     let starLabel = (
-      <div className={classes(["Star__Label--text", star.description && "hasMoreInfo"])}>
+      <div className={classes(['Star__Label--text', star.description && 'hasMoreInfo'])}>
         {star.description && <Icon name="bars" mr={0.1} fontSize={0.4} />}
         {star.name}
       </div>
@@ -49,10 +49,10 @@ export function StarMap() {
         key={star.key}
         id={stringToId(star.name)}
         className="Star"
-        style={{ "--star-color": star.occupiedColor || star.color } as CSSProperties}
+        style={{ '--star-color': star.occupiedColor || star.color } as CSSProperties}
       >
         <path d={star.path} transform={star.transform} />
-        <g className={classes(["Star__Label", (textVisible || star.capital) && "Star__Label--visible"])}>
+        <g className={classes(['Star__Label', (textVisible || star.capital) && 'Star__Label--visible'])}>
           <line
             className="Star__Label--line"
             x1={star.x}

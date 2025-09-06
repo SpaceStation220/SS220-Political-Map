@@ -1,0 +1,5 @@
+printWidth: 120
+overrides:
+  - files: "*.{js,ts,jsx,tsx}"
+    options:
+      singleQuote: true

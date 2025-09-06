@@ -1,13 +1,13 @@
-import { autoUpdate, flip, offset, useFloating } from "@floating-ui/react";
-import { useEffect, useMemo, useRef, useState } from "react";
-import { CSSTransition } from "react-transition-group";
-import { Icon, Stack } from "tgui-core/components";
-import { classes } from "tgui-core/react";
+import { autoUpdate, flip, offset, useFloating } from '@floating-ui/react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
+import { Icon, Stack } from 'tgui-core/components';
+import { classes } from 'tgui-core/react';
 
-import { Nations } from "../common";
-import { availableMarks } from "../common/marks";
-import { Mark } from "./Mark";
-import { Range } from "./Range";
+import { Nations } from '../common';
+import { availableMarks } from '../common/marks';
+import { Mark } from './Mark';
+import { Range } from './Range';
 
 export function ContextMenu(props) {
   const { targetRef, cursorRef, mapScale } = props;
@@ -17,7 +17,7 @@ export function ContextMenu(props) {
   const { refs, floatingStyles } = useFloating({
     open: isOpen,
     middleware: [flip(), offset(12)],
-    placement: "bottom-start",
+    placement: 'bottom-start',
     transform: false,
     whileElementsMounted: autoUpdate,
   });
@@ -54,8 +54,8 @@ export function ContextMenu(props) {
       setOpenPosition({ x: event.clientX, y: event.clientY });
     }
 
-    element.addEventListener("contextmenu", handleContextMenu);
-    return () => element.removeEventListener("contextmenu", handleContextMenu);
+    element.addEventListener('contextmenu', handleContextMenu);
+    return () => element.removeEventListener('contextmenu', handleContextMenu);
   }, [refs, targetRef]);
 
   const [iconColor, setIconColor] = useState<string>(Object.values(Nations)[0].color);
@@ -67,7 +67,7 @@ export function ContextMenu(props) {
     return Object.values(Nations).map((nation) => (
       <div
         key={nation.name}
-        className={classes(["CreateMark__Choose", iconColor === nation.color && "CreateMark__Choose--selected"])}
+        className={classes(['CreateMark__Choose', iconColor === nation.color && 'CreateMark__Choose--selected'])}
         onClick={() => setIconColor(nation.color)}
         style={{ backgroundColor: nation.color }}
       />
@@ -78,7 +78,7 @@ export function ContextMenu(props) {
     return availableMarks.map((mark) => (
       <div
         key={mark}
-        className={classes(["CreateMark__Choose", selectedIcon === mark && "CreateMark__Choose--selected"])}
+        className={classes(['CreateMark__Choose', selectedIcon === mark && 'CreateMark__Choose--selected'])}
         onClick={() => setSelectedIcon(mark)}
       >
         <Icon name={mark} />
@@ -153,7 +153,7 @@ function ContextMenuItem(props) {
     <div className="ContextMenu__Item Tab" onClick={onClick}>
       <Stack fill width="100%" textAlign="center">
         <Stack.Item className="ContextMenu__ItemIcon">
-          <Icon name={"copy"} />
+          <Icon name={'copy'} />
         </Stack.Item>
         <Stack.Item grow>{children}</Stack.Item>
       </Stack>

@@ -1,14 +1,14 @@
-import { lazy, Suspense, useRef } from "react";
-import { TransformComponent, TransformWrapper } from "react-zoom-pan-pinch";
-import { Stack } from "tgui-core/components";
+import { lazy, Suspense, useRef } from 'react';
+import { TransformComponent, TransformWrapper } from 'react-zoom-pan-pinch';
+import { Stack } from 'tgui-core/components';
 
-import { maxScale, minScale } from "./common/constants";
-import { store } from "./common/store";
-import { Coordinates, Loading, Sidebar, StarsBackground } from "./components";
-import { ContextMenu } from "./components/ContextMenu";
-import { Legend } from "./components/Legend";
+import { maxScale, minScale } from './common/constants';
+import { store } from './common/store';
+import { Coordinates, Loading, Sidebar, StarsBackground } from './components';
+import { ContextMenu } from './components/ContextMenu';
+import { Legend } from './components/Legend';
 
-const ScalableContent = lazy(() => import("./components/ScalableContent"));
+const ScalableContent = lazy(() => import('./components/ScalableContent'));
 
 function App() {
   const cursorPosition = useRef({ x: 0, y: 0 });
@@ -38,7 +38,7 @@ function App() {
 
     if (dragStarted.current && !dragStartPosition.current) {
       dragStartPosition.current = { x: state.positionX, y: state.positionY };
-      document.documentElement.classList.add("dragging");
+      document.documentElement.classList.add('dragging');
     }
   }
 
@@ -49,7 +49,7 @@ function App() {
   function handleDragEnd() {
     dragStarted.current = false;
     dragStartPosition.current = null;
-    document.documentElement.classList.remove("dragging");
+    document.documentElement.classList.remove('dragging');
   }
 
   return (
@@ -73,10 +73,10 @@ function App() {
         >
           <TransformComponent
             wrapperClass="MapWrapper"
-            wrapperStyle={{ width: "100vw", height: "100vh" }}
-            contentStyle={{ alignItems: "center", padding: "300px" }}
+            wrapperStyle={{ width: '100vw', height: '100vh' }}
+            contentStyle={{ alignItems: 'center', padding: '300px' }}
           >
-            <div ref={contextTargetRef} style={{ position: "relative" }} onMouseMove={handleMouseMove}>
+            <div ref={contextTargetRef} style={{ position: 'relative' }} onMouseMove={handleMouseMove}>
               <ScalableContent />
             </div>
           </TransformComponent>

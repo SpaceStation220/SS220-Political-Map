@@ -1,4 +1,4 @@
-import { Geom } from "polygon-clipping";
+import { Geom } from 'polygon-clipping';
 
 export const minScale = 0.75;
 export const maxScale = 3.5;

@@ -1,19 +1,19 @@
-import { Delaunay } from "d3-delaunay";
-import polygonClipping, { type MultiPolygon } from "polygon-clipping";
-import { CSSProperties, useMemo } from "react";
+import { Delaunay } from 'd3-delaunay';
+import polygonClipping, { type MultiPolygon } from 'polygon-clipping';
+import { CSSProperties, useMemo } from 'react';
 
-import { Nations, Stars } from "../common";
-import { POPULATED_SYSTEMS } from "../common/constants";
-import { findBestLogoPositionAndSize, stringToId } from "../common/helpers";
-import { MergedSectorType } from "../common/types";
-import { MoreInfo } from "./MoreInfo";
+import { Nations, Stars } from '../common';
+import { POPULATED_SYSTEMS } from '../common/constants';
+import { findBestLogoPositionAndSize, stringToId } from '../common/helpers';
+import { MergedSectorType } from '../common/types';
+import { MoreInfo } from './MoreInfo';
 
 export function SectorBorders() {
   const mergedSectors = useMemo(() => {
     const delaunay = Delaunay.from(
       Stars,
       (d) => d.position.x,
-      (d) => d.position.y
+      (d) => d.position.y,
     );
     const voronoi = delaunay.voronoi([0, 0, 1024, 1024]);
     const polygons = Stars.map((_, i) => voronoi.cellPolygon(i));
@@ -55,7 +55,7 @@ export function SectorBorders() {
     const delaunay = Delaunay.from(
       Stars,
       (d) => d.position.x,
-      (d) => d.position.y
+      (d) => d.position.y,
     );
     const voronoi = delaunay.voronoi([0, 0, 1024, 1024]);
     const polygons = Stars.map((_, i) => voronoi.cellPolygon(i));
@@ -121,11 +121,11 @@ export function SectorBorders() {
             <path
               key={`occupied-${sector.name}-${j}-${k}`}
               fill={`url(#occupied-${stringToId(sector.name)})`}
-              d={`M${ring.map((p) => p.join(",")).join("L")}Z`}
+              d={`M${ring.map((p) => p.join(',')).join('L')}Z`}
               style={{ stroke: sector.color, strokeWidth: 1 }}
             />
-          ))
-        )
+          )),
+        ),
       )}
 
       {mergedSectors.map((sector) =>
@@ -140,8 +140,8 @@ export function SectorBorders() {
                   <path
                     className="SectorBorder"
                     data-name={sector.name}
-                    style={{ "--sector-color": sector.color } as CSSProperties}
-                    d={`M${ring.map((p) => p.join(",")).join("L")}Z`}
+                    style={{ '--sector-color': sector.color } as CSSProperties}
+                    d={`M${ring.map((p) => p.join(',')).join('L')}Z`}
                   />
                   {sector.logo && logoSize > 0 && (
                     <image
@@ -156,8 +156,8 @@ export function SectorBorders() {
                 </g>
               </MoreInfo.Sector>
             );
-          })
-        )
+          }),
+        ),
       )}
     </>
   );

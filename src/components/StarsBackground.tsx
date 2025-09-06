@@ -3,8 +3,8 @@
  * Created by - https://x.com/realvjy
  */
 
-import { useLocalStorage } from "@uidotdev/usehooks";
-import { RefObject, useCallback, useEffect, useRef, useState } from "react";
+import { useLocalStorage } from '@uidotdev/usehooks';
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 
 interface StarProps {
   x: number;
@@ -33,7 +33,7 @@ export function StarsBackground(props: StarBackgroundProps) {
     maxTwinkleSpeed = 1,
   } = props;
 
-  const [spaceBackground] = useLocalStorage("space-background", true);
+  const [spaceBackground] = useLocalStorage('space-background', true);
   const [stars, setStars] = useState<StarProps[]>([]);
   const canvasRef: RefObject<HTMLCanvasElement | null> = useRef<HTMLCanvasElement>(null);
 
@@ -54,7 +54,7 @@ export function StarsBackground(props: StarBackgroundProps) {
         };
       });
     },
-    [starDensity, allStarsTwinkle, twinkleProbability, minTwinkleSpeed, maxTwinkleSpeed]
+    [starDensity, allStarsTwinkle, twinkleProbability, minTwinkleSpeed, maxTwinkleSpeed],
   );
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export function StarsBackground(props: StarBackgroundProps) {
     }
 
     const updateStars = () => {
-      const ctx = canvas.getContext("2d");
+      const ctx = canvas.getContext('2d');
       if (!ctx) {
         return;
       }
@@ -100,7 +100,7 @@ export function StarsBackground(props: StarBackgroundProps) {
       return;
     }
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) {
       return;
     }
@@ -128,7 +128,7 @@ export function StarsBackground(props: StarBackgroundProps) {
     spaceBackground && (
       <canvas
         ref={canvasRef}
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none", zIndex: -1 }}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: -1 }}
       />
     )
   );

@@ -1,4 +1,4 @@
-import "react-lazy-load-image-component/src/effects/blur.css";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import {
   autoUpdate,
@@ -11,14 +11,14 @@ import {
   useFloating,
   useInteractions,
   useTransitionStatus,
-} from "@floating-ui/react";
-import { cloneElement, ReactElement, useEffect, useMemo, useRef, useState } from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import { Icon, Stack, Tabs, Tooltip } from "tgui-core/components";
+} from '@floating-ui/react';
+import { cloneElement, ReactElement, useEffect, useMemo, useRef, useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { Icon, Stack, Tabs, Tooltip } from 'tgui-core/components';
 
-import { SCI } from "../common/planets";
-import { store } from "../common/store";
-import { Planet } from "../common/types";
+import { SCI } from '../common/planets';
+import { store } from '../common/store';
+import { Planet } from '../common/types';
 
 export function MoreInfo(props) {
   const { children, content } = props;
@@ -28,7 +28,7 @@ export function MoreInfo(props) {
     open: isOpen,
     onOpenChange: setIsOpen,
     middleware: [offset(24), shift({ crossAxis: true })],
-    placement: "top",
+    placement: 'top',
     whileElementsMounted(referenceEl, floatingEl, update) {
       const cleanup = autoUpdate(referenceEl, floatingEl, update, {
         animationFrame: true,
@@ -42,7 +42,7 @@ export function MoreInfo(props) {
   });
 
   const click = useClick(context, {
-    enabled: !document.documentElement.classList.contains("dragging"),
+    enabled: !document.documentElement.classList.contains('dragging'),
   });
   const dismiss = useDismiss(context);
   const clientPoint = useClientPoint(context, { enabled: !isMounted });
@@ -88,7 +88,7 @@ export function MoreInfo(props) {
 
 export function MoreInfoSector(props) {
   const { children, sector } = props;
-  const NO_DATA = "Нет данных";
+  const NO_DATA = 'Нет данных';
 
   const sectorInfo = useMemo(
     () => (
@@ -115,7 +115,7 @@ export function MoreInfoSector(props) {
         </div>
       </>
     ),
-    [sector]
+    [sector],
   );
 
   return <MoreInfo content={sectorInfo}>{children}</MoreInfo>;
@@ -127,7 +127,7 @@ type SCIItem = { desc: string; subtypes?: Record<string, string> };
 
 export function MoreInfoStar(props) {
   const { children, star } = props;
-  const [tab, setTab] = useState("description");
+  const [tab, setTab] = useState('description');
 
   const planets = useMemo(() => Object.values(star.planets) as Planet[], [star]);
   const [selectedPlanet, setSelectedPlanet] = useState<Planet | null>(null);
@@ -173,7 +173,7 @@ export function MoreInfoStar(props) {
         </ol>
       </div>
     ),
-    []
+    [],
   );
 
   const starInfo = (
@@ -186,19 +186,19 @@ export function MoreInfoStar(props) {
       {star.planets.length > 0 && (
         <Tabs mt={0}>
           <Tabs.Tab
-            selected={tab === "description"}
+            selected={tab === 'description'}
             onClick={() => {
               setSelectedPlanet(null);
-              setTab("description");
+              setTab('description');
             }}
           >
             Описание
           </Tabs.Tab>
           <Tabs.Tab
-            selected={tab === "planets"}
+            selected={tab === 'planets'}
             onClick={() => {
               setSelectedPlanet(planets[0]);
-              setTab("planets");
+              setTab('planets');
             }}
           >
             Планеты
@@ -206,12 +206,12 @@ export function MoreInfoStar(props) {
         </Tabs>
       )}
       <hr />
-      {tab === "description" && (
+      {tab === 'description' && (
         <div ref={contentRef} className="MoreInfo__Content star">
           {star.description}
         </div>
       )}
-      {tab === "planets" && selectedPlanet && (
+      {tab === 'planets' && selectedPlanet && (
         <>
           <div ref={contentRef} className="MoreInfo__PlanetTitle">
             {planetImage}
@@ -223,7 +223,7 @@ export function MoreInfoStar(props) {
             </div>
             <Stack vertical className="MoreInfo__PlanetTitle--population" g={0}>
               <Stack.Item>Население</Stack.Item>
-              <Stack.Item>{selectedPlanet.population || "Необитаема"}</Stack.Item>
+              <Stack.Item>{selectedPlanet.population || 'Необитаема'}</Stack.Item>
             </Stack>
             <Tooltip content={sciTooltip} position="bottom-end">
               <div className="MoreInfo__PlanetTitle--sci">
@@ -241,18 +241,18 @@ export function MoreInfoStar(props) {
           <hr />
           <Tabs>
             {planets.map((planet: Planet | string, i) => {
-              const isObject = typeof planet === "object" && planet !== null && "name" in planet;
+              const isObject = typeof planet === 'object' && planet !== null && 'name' in planet;
               const name = isObject ? planet.name : String(planet);
               const valid = isObject && planet.name;
 
               return (
                 <Tabs.Tab
                   key={`${name}-${i}`}
-                  className={!valid ? "Tab--error" : ""}
+                  className={!valid ? 'Tab--error' : ''}
                   selected={!!valid && selectedPlanet.name === name}
                   onClick={() => valid && setSelectedPlanet(planet as Planet)}
                 >
-                  {valid ? name : "ОШИБКА"}
+                  {valid ? name : 'ОШИБКА'}
                 </Tabs.Tab>
               );
             })}
