@@ -43,7 +43,7 @@ export const Stars: Star[] = [
     position: { x: 512, y: 512 },
   },
   {
-    name: 'HD 7924',
+    name: 'Харр’кельм',
     affiliation: Nations.Imperium,
     type: STAR_TYPE.Controlled,
     position: { x: 479, y: 58 },
@@ -164,7 +164,7 @@ export const Stars: Star[] = [
     position: { x: 747, y: 363 },
   },
   {
-    name: 'δ Треугольника',
+    name: 'Кварр’го’й',
     affiliation: Nations.Imperium,
     type: STAR_TYPE.Controlled,
     position: { x: 779, y: 450 },
@@ -182,7 +182,7 @@ export const Stars: Star[] = [
     position: { x: 666, y: 453 },
   },
   {
-    name: '36 Змееносца',
+    name: 'Куа’ло',
     affiliation: Nations.Imperium,
     type: STAR_TYPE.Controlled,
     position: { x: 675, y: 496 },
