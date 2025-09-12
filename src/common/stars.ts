@@ -632,7 +632,7 @@ export const Stars: Star[] = [
     name: 'Дельта Эридана',
     affiliation: Nations.Free,
     type: STAR_TYPE.Controversial,
-    position: { x: 295, y: 628 },
+    position: { x: 334, y: 512 },
   },
   {
     name: 'Кессея',
